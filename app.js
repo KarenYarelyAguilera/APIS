@@ -9,4 +9,5 @@ app.use(bodyParser.json())
 app.use(express.json())
 app.use('/api',router)
 
+
 app.listen(PORT,()=>console.log(`Servidor corriendo en puerto ${PORT}`))

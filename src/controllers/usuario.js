@@ -9,7 +9,6 @@ export const ContrUsuario = {
     postUsuario: async (req,res)=>{
         try {
             const {id,usuario,nombre,clave,correo,rol } = req.body;
-            console.log(req.body);
             const result = await ModUsuarios.postInsertUsuario({ id,usuario,nombre,clave,correo,rol });
             res.status(201).json({ id: result.id });
           } catch (error) {
