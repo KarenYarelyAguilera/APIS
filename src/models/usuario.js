@@ -9,9 +9,7 @@ export const ModUsuarios = {
     } catch (error) {
       console.log(error);
       throw new Error("Error al obtener usuarios");
-    } finally {
-      await conexion.end();
-    }
+    } 
   },
 
   postInsertUsuario: async (usuario) => {
@@ -31,8 +29,6 @@ export const ModUsuarios = {
     } catch (error) {
       console.log(error);
       throw new Error("Error al crear usuarios");
-    } finally {
-      await conexion.end();
     }
   },
 };
