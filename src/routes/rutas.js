@@ -14,7 +14,8 @@ router.post('/mail/recover',Mailer.sendMail)
 
 
 //Login
-router.post('/login',ContrLogin.getUser)
-router.get(' /login/compare',ContrLogin.getPsswrd)
+router.post('/login/compare',ContrLogin.getPsswrd)
+router.get('/login/preguntas',ContrLogin.getPreguntas)
+router.post('/login',ContrLogin.getUser) 
 
 export default router

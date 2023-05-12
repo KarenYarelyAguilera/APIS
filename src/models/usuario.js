@@ -1,6 +1,7 @@
 import { connectDB } from "../config/Conn.js";
 
 export const ModUsuarios = {
+  
   getUsuarios: async () => {
     const conexion = await connectDB();
     try {

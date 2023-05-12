@@ -9,8 +9,9 @@ const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
-app.use(morgan('dev'))
 app.use(express.json())
+app.use(morgan('dev'))
+
 app.use('/api',router)
 
 
