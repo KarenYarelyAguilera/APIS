@@ -32,4 +32,25 @@ export const ModUsuarios = {
       throw new Error("Error al crear usuarios");
     }
   },
+
+  putUpdateUsuario: async(usuario)=>{
+    try {
+      const conexion =await connectDB()
+      const [filas]=await conexion.query("UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ?, idEmpleado = ? WHERE Id_usuario=?;", 
+      [
+        usuario.usuario,
+        usuario.nombreUsuario,
+        usuario.estadoUsuario,
+        usuario.clave,
+        usuario.idRol,
+        usuario.correo,
+        usuario.idEmpleado,
+        usuario.idUsuario
+      ])
+      return{estado:"ok"}
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al actualizar el usuario");
+    }
+  },
 };

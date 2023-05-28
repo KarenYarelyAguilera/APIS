@@ -15,6 +15,16 @@ export const ContrUsuario = {
             console.log(error);
             res.status(500).json({ message: 'Error creating user' });
           }
+    },
+    puUsuario:async (req,res)=>{
+      try {
+        const{ usuario, nombreUsuario,  estadoUsuario, clave, idRol,correo, idEmpleado,idUsuario}=req.body;
+        const result= await ModUsuarios.putUpdateUsuario({usuario, nombreUsuario,  estadoUsuario, clave, idRol,correo, idEmpleado,idUsuario});
+        res.status(200).json({response:"ok"})
+      } catch (error) {
+        console.log(error);
+        
+      }
     }
 }
 

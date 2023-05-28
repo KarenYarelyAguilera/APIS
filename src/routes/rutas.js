@@ -8,6 +8,7 @@ const router = express.Router();
 //usuario
 router.get('/usuarios',ContrUsuario.getUsuarios)
 router.post('/usuarios',ContrUsuario.postUsuario)
+router.put('/usuarios/update',ContrUsuario.puUsuario)
 
 //correo
 router.post('/mail/recover',Mailer.sendMail)
