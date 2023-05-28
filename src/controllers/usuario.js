@@ -1,7 +1,7 @@
 import { ModUsuarios } from "../models/usuario.js";
 
 export const ContrUsuario = {
-  getUsuarios: async () => {
+  getUsuarios: async (req, res) => {
     const users = await ModUsuarios.getUsuarios();
     res.json(users);
   },
@@ -24,16 +24,7 @@ export const ContrUsuario = {
   },
   putUsuario: async (req, res) => {
     try {
-      const {
-        usuario,
-        nombreUsuario,
-        estadoUsuario,
-        clave,
-        idRol,
-        correo,
-        idEmpleado,
-        idUsuario,
-      } = req.body;
+      const { usuario, nombreUsuario, estadoUsuario, clave,idRol, correo, idEmpleado, idUsuario,} = req.body;
       const result = await ModUsuarios.putUpdateUsuario({
         usuario,
         nombreUsuario,
@@ -44,7 +35,7 @@ export const ContrUsuario = {
         idEmpleado,
         idUsuario,
       });
-      res.status(200).json({response:"Ok"})
+      res.status(200).json({ response: "Ok" })
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api")
