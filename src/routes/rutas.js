@@ -3,6 +3,7 @@ import { ContrUsuario } from "../controllers/usuario.js";
 import { ContrLogin } from "../controllers/login.js";
 import { Mailer } from "../controllers/correos.js";
 import { ContrEmpleado } from "../controllers/empleado.js";
+import { ContrPreguntas } from "../controllers/preguntas.js";
 
 const router = express.Router();
 
@@ -31,6 +32,13 @@ router.put('/empleado',ContrEmpleado.putEmpleado)
 router.delete('/empleado',ContrEmpleado.delEmpleado)
 router.get('/empleado/sucursal',ContrEmpleado.getSucursales)
 router.get('/empleado/genero',ContrEmpleado.getGeneros)
+
+
+//preguntas
+router.get('/preguntas',ContrPreguntas.getPreguntas)
+router.post('/preguntas',ContrPreguntas.postPreguntas)
+router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
+router.post('/preguntas/respuestas',ContrPreguntas.postRespuestas)
 
 
 export default router
