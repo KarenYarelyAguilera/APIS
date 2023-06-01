@@ -4,6 +4,8 @@ import { ContrLogin } from "../controllers/login.js";
 import { Mailer } from "../controllers/correos.js";
 import { ContrEmpleado } from "../controllers/empleado.js";
 import { ContrPreguntas } from "../controllers/preguntas.js";
+import { ContrVentaDetalleProm } from "../controllers/ventaDetallePromocion.js";
+import { ContrVentaDetallePromMarca } from "../controllers/ventaDetallePromocionMarca.js";
 
 const router = express.Router();
 
@@ -39,6 +41,19 @@ router.get('/preguntas',ContrPreguntas.getPreguntas)
 router.post('/preguntas',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas',ContrPreguntas.postRespuestas)
+
+//ventaDetallePromocion
+router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
+router.post('/ventaDetallePromocion',ContrVentaDetalleProm.InsertVentaDetallePromo)
+router.put('/ventaDetallePromocion',ContrVentaDetalleProm.UpdateVentaDetallePromo)
+router.delete('/ventaDetallePromocion',ContrVentaDetalleProm.DeleteVentaDetallePromo)
+
+
+//ventaDetallePromocionMarca
+router.get('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.getdetallemarca)
+router.post('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.InsertVentaDetalleMarca)
+router.put('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.UpdateVentaDetalleMarca)
+router.delete('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.DeleteVentaDetalleMarca)
 
 
 export default router
