@@ -2,6 +2,7 @@ import express from "express";
 import { ContrUsuario } from "../controllers/usuario.js";
 import { ContrLogin } from "../controllers/login.js";
 import { Mailer } from "../controllers/correos.js";
+import { ContrClientes } from "../controllers/clientes.js";
 
 const router = express.Router();
 
@@ -24,6 +25,11 @@ router.post('/mail/recover',Mailer.sendMail)
 router.post('/login/compare',ContrLogin.getPsswrd)
 router.get('/login/preguntas',ContrLogin.getPreguntas)
 router.post('/login',ContrLogin.getUser) 
+router.put('/login/PVez',ContrLogin.putLoginPVez)
+
+//Clientes
+router.get('/clientes',ContrClientes.getClientes)
+router.post('/clientes/clienteNuevo',ContrClientes.postCliente)
 
 
 export default router
