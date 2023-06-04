@@ -27,9 +27,14 @@ router.get('/login/preguntas',ContrLogin.getPreguntas)
 router.post('/login',ContrLogin.getUser) 
 router.put('/login/PVez',ContrLogin.putLoginPVez)
 
+//test
+router.post('/test/encipt',ContrLogin.test)
+
 //Clientes
 router.get('/clientes',ContrClientes.getClientes)
 router.post('/clientes/clienteNuevo',ContrClientes.postCliente)
+router.put('/clientes/actualizar',ContrClientes.putCliente)
+router.delete('/clientes/eliminar',ContrClientes.delCliente)
 
 
 export default router

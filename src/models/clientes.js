@@ -19,5 +19,25 @@ export const ModClientes = {
         } catch (error) {
             console.log(error);
         }
+    },
+    putCliente: async (Cliente)=>{
+        try {
+            const conexion = await connectDB()
+            const [filas] = await conexion.query("UPDATE tbl_cliente SET nombre=?, apellido=?, IdGenero=?, fechaNacimiento=?, direccion=?, telefonoCliente=?, correoElectronico= ? where idCliente =?;",
+            [Cliente.nombre,Cliente.apellido,Cliente.idGenero,Cliente.fechaNacimiento,Cliente.direccion,Cliente.telefono,Cliente.correo,Cliente.idCliente])
+            return {estado:"ok"}
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    delCliente: async (Cliente)=>{
+        try {
+            const conexion = await connectDB()
+            const [filas] = await conexion.query("DELETE FROM tbl_cliente where idCliente = ?;",
+           [Cliente.idCliente])
+            return {estado:"ok"}
+        } catch (error) {
+            console.log(error);
+        }
     }
 }

@@ -20,4 +20,24 @@ export const ContrClientes = {
       res.status(500).json("Error al consumir el api");
     }
   },
+  putCliente: async (req,res)=>{
+    try {
+      const {idCliente,nombre,apellido,idGenero,fechaNacimiento,direccion,telefono,correo} = req.body
+      const result = await ModClientes.putCliente({idCliente,nombre,apellido,idGenero,fechaNacimiento,direccion,telefono,correo})
+      res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Error al consumir el api");
+  }
+  },
+  delCliente: async (req,res)=>{
+    try {
+      const {idCliente} = req.body
+      const result = await ModClientes.delCliente({idCliente})
+      res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Error al consumir el api");
+  }
+  }
 };

@@ -60,4 +60,13 @@ export const ContrLogin = {
       res.status(500).json({ message: "Error al consultar las preguntas" });
     }
   },
+  test: async (req,res)=>{
+    try {
+      const {psswrd} = req.body
+      const result = await ModLogin.passEncript({psswrd})
+      res.json(result)
+    } catch (error) {
+      
+    }
+  }
 };
