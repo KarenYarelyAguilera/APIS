@@ -92,5 +92,4 @@ export const ContrUsuario = {
       throw new Error("Error al consumir el api");
     }
   }
-
 };
