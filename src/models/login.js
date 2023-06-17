@@ -3,6 +3,18 @@ import bcrypt from "bcrypt";
 
 export const ModLogin = {
 
+  putLoginPVez:async(Usuario)=>{
+    try {
+      const conexion = await connectDB()
+      const [filas] = await conexion.query('UPDATE tbl_ms_usuario  SET `Preguntas_Contestadas`=?,`Primer_Ingreso`=1  WHERE  `Correo_Electronico`=?',
+      [Usuario.nPreguntas,Usuario.correo])
+      return {state :"ok"}      
+    } catch (error) {
+      
+    }
+  },
+
+
   getPreguntas: async (Usuario)=>{
     try {
       const conexion = await connectDB();
@@ -11,7 +23,7 @@ export const ModLogin = {
       )
       return filas
     } catch (error) {
-      
+      console.log(error);
     }
 
   },
