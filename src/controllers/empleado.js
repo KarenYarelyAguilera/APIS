@@ -35,7 +35,7 @@ export const ContrEmpleado = {
     },
     putEmpleado: async (req, res) => {
         try {
-            const { nombre, apellido, telEmple, idSucursal, idGenero, numId, idEmpleado, } = req.body;
+            const { nombre, apellido, telEmple, idSucursal, idGenero, numId, IdEmpleado, } = req.body;
             const result = await ModEmpleados.putUpdateEmpleado({ 
                 nombre, 
                 apellido, 
@@ -43,7 +43,7 @@ export const ContrEmpleado = {
                 idSucursal, 
                 idGenero, 
                 numId, 
-                idEmpleado, 
+                IdEmpleado, 
             });
             res.status(200).json({ response: "Ok" })
         } catch (error) {
@@ -53,8 +53,8 @@ export const ContrEmpleado = {
     },
     delEmpleado:async(req, res)=>{
         try {
-            const {idEmpleado} = req.body;
-            const result = await ModEmpleados.delDeleteEmpleado({idEmpleado});
+            const {IdEmpleado} = req.body;
+            const result = await ModEmpleados.delDeleteEmpleado({IdEmpleado});
             res.status(200).json({ response: "Ok" })
         } catch (error) {
             console.log(error);

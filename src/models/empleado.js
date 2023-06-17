@@ -54,7 +54,7 @@ export const ModEmpleados = {
             empleado.idSucursal,
             empleado.idGenero,
             empleado.numId,
-            empleado.idEmpleado,
+            empleado.IdEmpleado,
           ]
           );
           return {estado:"ok"}
@@ -68,7 +68,7 @@ export const ModEmpleados = {
             const conexion = await connectDB()
             const [filas] = await conexion.query("DELETE FROM tbl_empleado where IdEmpleado = ?;",
           [
-            empleado.idEmpleado,
+            empleado.IdEmpleado,
           ]
           );
             
