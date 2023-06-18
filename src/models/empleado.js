@@ -4,7 +4,7 @@ export const ModEmpleados = {
     getEmpleados: async () => {
         try {
         const conexion = await connectDB();
-          const [filas] = await conexion.query("select * from tbl_empleado");
+          const [filas] = await conexion.query("select e.IdEmpleado, e.nombre, e.apellido, e.telefonoEmpleado, s.departamento, g.descripcion, e.numeroIdentidad from tbl_empleado as e inner join tbl_sucursal as s on e.IdSucursal=s.IdSucursal inner join tbl_genero as g on g.IdGenero=e.IdGenero ORDER BY IdEmpleado ASC;");
           return filas;
         } catch (error) {
           console.log(error);
@@ -54,7 +54,7 @@ export const ModEmpleados = {
             empleado.idSucursal,
             empleado.idGenero,
             empleado.numId,
-            empleado.idEmpleado,
+            empleado.IdEmpleado,
           ]
           );
           return {estado:"ok"}
@@ -68,7 +68,7 @@ export const ModEmpleados = {
             const conexion = await connectDB()
             const [filas] = await conexion.query("DELETE FROM tbl_empleado where IdEmpleado = ?;",
           [
-            empleado.idEmpleado,
+            empleado.IdEmpleado,
           ]
           );
             
