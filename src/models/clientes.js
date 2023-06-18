@@ -1,4 +1,4 @@
-import { connectDB } from "../config/Conn.js";
+import { connectDB } from "../config/Conn.js"
 
 export const ModClientes = {
     getClientes: async ()=>{
