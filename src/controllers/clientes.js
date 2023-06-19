@@ -11,8 +11,8 @@ export const ContrClientes = {
     }
   },
   postCliente: async (req, res) => {
+    const {idCliente,nombre,apellido,idGenero,fechaNacimiento,direccion,telefono,correo} = req.body
     try {
-        const {idCliente,nombre,apellido,idGenero,fechaNacimiento,direccion,telefono,correo} = req.body
         const result = await ModClientes.postCliente({idCliente,nombre,apellido,idGenero,fechaNacimiento,direccion,telefono,correo})
         res.status(200).json(result);
     } catch (error) {
