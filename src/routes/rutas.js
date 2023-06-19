@@ -30,7 +30,7 @@ const router = express.Router();
 
 //usuario
 router.get('/usuarios',ContrUsuario.getUsuarios)
-router.post('/usuarios',ContrUsuario.postUsuario)
+router.post('/usuario/insert',ContrUsuario.postUsuario)
 router.put('/usuario/update',ContrUsuario.putUsuario)
 
 router.delete('/usuario/delete',ContrUsuario.delUsuario)
