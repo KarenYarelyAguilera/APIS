@@ -2,6 +2,11 @@ import express from "express";
 import { ContrUsuario } from "../controllers/usuario.js";
 import { ContrLogin } from "../controllers/login.js";
 import { Mailer } from "../controllers/correos.js";
+import { ContrCompraDetalle } from "../controllers/ComprasDetalle.js";
+import { ContrVentaDetalle } from "../controllers/VentasDetalles.js";
+import { ContrKardex } from "../controllers/kardex.js";
+import { ContrVentaDetalleDescuento } from "../controllers/VentasDetalleDescuentos.js";
+
 
 import { ContrGarantia } from "../controllers/garantia.js";
 import { ContrMarca } from "../controllers/marca.js";
@@ -197,6 +202,28 @@ router.post('/tipopago/crear', ContrTipoPago.postTipoPago)
 router.put('/tipopago/actualizar', ContrTipoPago.putTipoPago)
 router.delete('/tipopago/eliminar', ContrTipoPago.delTipoPago)
 
+
+//DetalleCompra
+ router.get('/ComprasDetalle',ContrCompraDetalle.GetCompraDetalle)
+ router.post('/ComprasDetalle',ContrCompraDetalle.PostCompraDetalle)
+ router.put('/ComprasDetalle',ContrCompraDetalle.PutCompraDetalle)
+ router.delete('/ComprasDetalle',ContrCompraDetalle.DeleteCompraDetalle)
+
+//DetalleVenta
+router.get('/VentasDetalles',ContrVentaDetalle.GetVentaDetalle)
+router.post('/VentasDetalles',ContrVentaDetalle.PostVentaDetalle)
+router.put('/VentasDetalles',ContrVentaDetalle.PutVentaDetalle)
+router.delete('/VentasDetalles',ContrVentaDetalle.DeleteVentaDetalle)
+
+//Kardex
+router.get('/kardex',ContrKardex.GetKardex)
+router.post('/kardex',ContrKardex.PostKardex)
+
+//VentaDetalleDescuento
+router.get('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.GetVentaDetalleDescuento)
+router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetalleDescuento)
+router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
+router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
 
 
 export default router
