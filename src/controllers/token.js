@@ -15,4 +15,13 @@
         res.status(200).json(result);
         } catch (error) {}
     },
+    obtenerId:async(req,res)=>{
+        try {
+            const {correo}=req.body
+            const result= await TokenMod.obtenerId({correo})
+            res.status(200).json(result)
+        } catch (error) {
+            
+        }
+    },
     };

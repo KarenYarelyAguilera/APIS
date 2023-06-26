@@ -90,6 +90,17 @@ export const TokenMod = {
       return false;
     }
   },
+  obtenerId:async (correo)=>{
+    try {
+      const conexion = await connectDB()
+      const [rows] = await conexion.query('SELECT `Id_Usuario` FROM tbl_ms_usuario where `Correo_Electronico`=?',
+      [correo.correo])
+      return rows[0].Id_Usuario     
+    } catch (error) {
+      return error
+    }
+
+  },
   
   
 };

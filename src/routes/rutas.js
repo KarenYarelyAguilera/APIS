@@ -44,6 +44,7 @@ router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
 //token
 router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
 router.post('/token/verificar',TokenContr.verificarCodigo)
+router.post('/token/id',TokenContr.obtenerId)
 
 
 //correo

@@ -1,5 +1,6 @@
 import { connectDB } from "../config/Conn.js";
 import bcrypt from "bcrypt";
+import { ModLogin } from "./login.js";
 
 export const ModUsuarios = {
   getUsuarios: async () => {
