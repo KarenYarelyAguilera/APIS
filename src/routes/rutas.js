@@ -79,6 +79,11 @@ router.post('/Gestion/NuevaSucursal',ContrGestion.postInsertSucursal)
 router.put('/Gestion/ActualizarSucursal',ContrGestion.putInsertSucursal)
 router.delete('/Gestion/EliminarSucursal',ContrGestion.deleteSucursal)
 
+//Rol
+router.get('/Rol',ContrRol.getRol)
+router.post('/Rol/NuevoRol',ContrRol.postRol)
+router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
+router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 
 
 
@@ -181,18 +186,6 @@ router.post('/promocionmarca/crear', ContrPromocionMarca.postPromoMarca)
 router.put('/promocionmarca/actualizar', ContrPromocionMarca.putPromoMarca)
 router.delete('/promocionmarca/eliminar', ContrPromocionMarca.delPromoMarca)
 
-//Roles
-router.get('/roles', ContrRol.getRol)
-router.get('/permisosroles', ContrRol.getPermisosRoles)
-router.get('/permisosobjetos', ContrRol.getPermisoObjeto)
-router.get('/permisos/consulta', ContrRol.getPermisoConsulta)
-router.put('/permisos/update', ContrRol.putUpdatePermisosConsulta)
-router.put('/permisos/insert', ContrRol.putUpdatePermisosInsert)
-router.put('/permisos/update', ContrRol.putUpdatePermisosUpdate)
-router.get('/verpermisosroles', ContrRol.getVerPermisosRoles)
-router.put('/permisos/delete', ContrRol.putUpdatePermisosDelete)
-router.delete('/roles/delete', ContrRol.deleteRol)
-router.get('/objetos', ContrRol.getObjetos)
 
 //TipoPago
 router.get('/tipopago', ContrTipoPago.getTipoPagos)

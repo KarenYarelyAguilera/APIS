@@ -1,5 +1,5 @@
 import { connectDB } from "../config/Conn.js";
-import { ModLogin } from "./login.js";
+import bcrypt from "bcrypt";
 
 export const ModUsuarios = {
   getUsuarios: async () => {
@@ -16,6 +16,14 @@ export const ModUsuarios = {
   },
 
   postInsertUsuario: async (usuario) => {
+    const rondasSalto = 10;
+    let hash
+    try {
+      const saltos = await bcrypt.genSalt(rondasSalto);
+       hash = await bcrypt.hash(usuario.clave, saltos);
+    } catch (error) {
+      throw new Error(error);
+    }    
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
@@ -23,7 +31,7 @@ export const ModUsuarios = {
         [
           usuario.usuario,
           usuario.nombre,
-          usuario.clave,
+          hash,
           usuario.rol,
           usuario.correo,
           usuario.id,
