@@ -1,4 +1,5 @@
 import { connectDB } from "../config/Conn.js";
+import bcrypt from "bcrypt";
 import { ModLogin } from "./login.js";
 
 export const ModUsuarios = {
@@ -16,6 +17,14 @@ export const ModUsuarios = {
   },
 
   postInsertUsuario: async (usuario) => {
+    const rondasSalto = 10;
+    let hash
+    try {
+      const saltos = await bcrypt.genSalt(rondasSalto);
+       hash = await bcrypt.hash(usuario.clave, saltos);
+    } catch (error) {
+      throw new Error(error);
+    }    
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
@@ -23,7 +32,7 @@ export const ModUsuarios = {
         [
           usuario.usuario,
           usuario.nombre,
-          usuario.clave,
+          hash,
           usuario.rol,
           usuario.correo,
           usuario.id,
@@ -39,7 +48,7 @@ export const ModUsuarios = {
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
-        "UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ?, idEmpleado = ? WHERE Id_usuario=?;",
+        "UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ? WHERE Id_usuario=?;",
         [
           usuario.usuario,
           usuario.nombreUsuario,
@@ -47,7 +56,6 @@ export const ModUsuarios = {
           usuario.clave,
           usuario.idRol,
           usuario.correo,
-          usuario.idEmpleado,
           usuario.idUsuario,
         ]
       );
