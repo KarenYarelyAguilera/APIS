@@ -1,5 +1,6 @@
 import { connectDB } from "../config/Conn.js";
 import bcrypt from "bcrypt";
+import { ModLogin } from "./login.js";
 
 export const ModUsuarios = {
   getUsuarios: async () => {
@@ -47,7 +48,7 @@ export const ModUsuarios = {
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
-        "UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ?, idEmpleado = ? WHERE Id_usuario=?;",
+        "UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ? WHERE Id_usuario=?;",
         [
           usuario.usuario,
           usuario.nombreUsuario,
@@ -55,7 +56,6 @@ export const ModUsuarios = {
           usuario.clave,
           usuario.idRol,
           usuario.correo,
-          usuario.idEmpleado,
           usuario.idUsuario,
         ]
       );
