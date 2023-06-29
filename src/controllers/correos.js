@@ -1,4 +1,4 @@
-import { MailMod } from "../models/correo.js"
+import { MailMod } from "../Models/correo.js"
 
 export const Mailer = {
     sendMail: async(req,res)=>{

@@ -24,6 +24,7 @@ export const ContrUsuario = {
   },
   putUsuario: async (req, res) => {
     try {
+      console.log(req.body);
       const {usuario,nombreUsuario,estadoUsuario,clave,idRol,correo,idEmpleado,idUsuario,} = req.body;
       const result = await ModUsuarios.putUpdateUsuario({
         usuario,
