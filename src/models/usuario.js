@@ -28,7 +28,7 @@ export const ModUsuarios = {
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
-        "insert into TBL_MS_USUARIO (Usuario, Nombre_Usuario, Contrasenia,Id_Rol, Correo_Electronico, idEmpleado, fecha_creacion,fecha_modificacion)values (?, ?, ?, ?, ?, ?, current_timestamp(), current_timestamp());",
+        'insert into TBL_MS_USUARIO (Usuario, Nombre_Usuario, Contrasenia,Id_Rol, Correo_Electronico, idEmpleado, fecha_creacion,fecha_modificacion,Estado_Usuario,Fecha_Vencimiento)values (?, ?, ?, ?, ?, ?, current_timestamp(), current_timestamp(),"Nuevo",date_add(current_date(),interval 90 day));',
         [
           usuario.usuario,
           usuario.nombre,
