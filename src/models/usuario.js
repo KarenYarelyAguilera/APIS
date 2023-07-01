@@ -45,6 +45,15 @@ export const ModUsuarios = {
     }
   },
   putUpdateUsuario: async (usuario) => {
+    const rondasSalto = 10;
+    let hash
+    try {
+      const saltos = await bcrypt.genSalt(rondasSalto);
+       hash = await bcrypt.hash(usuario.clave, saltos);
+    } catch (error) {
+      throw new Error(error);
+    }  
+    console.log(hash);
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
@@ -53,7 +62,7 @@ export const ModUsuarios = {
           usuario.usuario,
           usuario.nombreUsuario,
           usuario.estadoUsuario,
-          usuario.clave,
+          hash,
           usuario.idRol,
           usuario.correo,
           usuario.idUsuario,
