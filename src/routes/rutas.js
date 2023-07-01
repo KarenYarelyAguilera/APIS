@@ -31,6 +31,8 @@ import { ContrVentas } from "../controllers/ventas.js";
 import { ContrRol } from "../controllers/rol.js";
 import { ContrClientes } from "../controllers/clientes.js";
 
+import { TokenContr } from "../controllers/token.js";
+
 const router = express.Router();
 
 //usuario
@@ -44,6 +46,10 @@ router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
 
+//token
+router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
+router.post('/token/verificar',TokenContr.verificarCodigo)
+router.post('/token/id',TokenContr.obtenerId)
 
 
 //correo
