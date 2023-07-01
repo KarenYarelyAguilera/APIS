@@ -82,6 +82,51 @@ postEliminarEmpleado: async (req,res)=> {
     }
 },
 
+//------------USUARIO--------------
+
+//------------------Insertar Usuario----------------
+postInsertUsuario:async(req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result=await ModBitacora.postInsertUsuario({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------Lista de Usuario------------
+postListaUsuario:async(req,res)=>{
+    try {
+        const{Id}=req.body;
+        const result=await ModBitacora.postListaUsuario({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error)
+    }
+},
+//---------Actualizar Usuario-----------------
+postActualizarUsuario:async(req,res)=>{
+    try {
+        const{Id}=req.body;
+        const result=await ModBitacora.postActualizarUsuario({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error)
+    }
+},
+
+//------------Eliminar Usuario---------------------
+postEliminarUsuario:async(req,res)=>{
+    try {
+        const{Id}=req.body;
+        const result=await ModBitacora.postEliminarUsuario({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error)
+    }
+},
+
 //----------MODULO DE VENTAS-------------------
 postModuloVenta: async (req,res)=> {
     try {
