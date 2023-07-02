@@ -45,6 +45,7 @@ router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
+router.post('/usuario/AutoRegistro', ContrUsuario.postUsuarioAutoRegistro)
 
 //token
 router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
@@ -108,6 +109,7 @@ router.put('/empleado/actualizar',ContrEmpleado.putEmpleado)
 router.delete('/empleado/eliminar',ContrEmpleado.delEmpleado)
 router.get('/empleado/sucursal',ContrEmpleado.getSucursales)
 router.get('/empleado/genero',ContrEmpleado.getGeneros)
+router.post('/empleado/AutoRegistro', ContrEmpleado.postEmpleadoAutoRegistro)
 
 
 //preguntas
