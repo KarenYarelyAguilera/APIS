@@ -130,6 +130,8 @@ router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
 //--Login y Recuperacion de Contraseña--
 router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
 router.post('/bitacora/Recuperacion',ContrBitacora.postInsertContra)
+router.post('/bitacora/PreguntaSeguridad',ContrBitacora.postPrgunta)
+router.post('/bitacora/RespuestaSeguridad',ContrBitacora.postPrgunta)
 //--Empleado--
 router.post('/bitacora/Empleado',ContrBitacora.postInsertModEmpleado)
 router.post('/bitacora/RegistroEmpleado',ContrBitacora.postInsertRegistroEmpleado)

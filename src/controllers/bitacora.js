@@ -25,6 +25,35 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+    //-----------PREGUNTAS DE SEGURIDAD-----------
+    //----Preguntas ---------
+
+    postPrgunta : async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postPrgunta({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    //------------Respuestas-----------
+    postRespuesta : async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postRespuesta({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+
+
+
+
+
  //---------------------MODULO EMPLEADO------------------
  //------Ingreso al modulo de empleados----------
  postInsertModEmpleado : async (req,res)=> {

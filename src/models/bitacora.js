@@ -35,6 +35,32 @@ export const ModBitacora = {
     //-----------PREGUNTAS DE SEGURIDAD-----------
     //----Preguntas ---------
 
+    postPrgunta: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,3,"Pregunta Seguridad","El usuario ingreso a la pantalla de Preguntas de Seguridad")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
+
+    //------------Respuestas-----------
+    postRespuesta: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,3,"Pregunta Seguridad","El usuario ingreso ingreso una respuesta a la pregunta seguridad")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
     //---------------------MODULO EMPLEADO------------------
 
     //------Ingreso al modulo de empleados----------
