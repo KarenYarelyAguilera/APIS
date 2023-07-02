@@ -114,6 +114,9 @@ router.get('/preguntas',ContrPreguntas.getPreguntas)
 router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
+router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
+router.post('/correo/existe',ContrPreguntas.getUser) 
+
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)

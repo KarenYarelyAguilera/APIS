@@ -40,6 +40,27 @@ export const ContrPreguntas = {
             res.status(500).json({ message: "Error al ingresar las preguntas" });
         }
     },
+
+    compararRespuesta:async(req,res)=>{
+        try {
+            const {Id_Pregunta, Id_Usuario, Respuesta}=req.body
+            const result= await ModPreguntas.compararRespuesta({Id_Pregunta, Id_Usuario, Respuesta})
+            res.status(200).json(result)
+        } catch (error) {
+            
+        }
+    },
+
+    getUser: async (req, res) => {
+        try {
+          const { correo } = req.body;
+          const result = await ModPreguntas.userExist({ correo });
+          res.status(200).json(result);
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({ message: "Usuario no existe" });
+        }
+      },
     
 
 
