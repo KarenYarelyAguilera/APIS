@@ -148,17 +148,20 @@ router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
 //BITACORA
 //--Login y Recuperacion de Contraseña--
 router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
-router.post('/bitacora/Recuperacion',ContrBitacora.postInsertContra)
+router.post('/bitacora/Cierre',ContrBitacora.postCerrarSesion)
+router.post('/Recuperacionbitacora/',ContrBitacora.postInsertContra)
 router.post('/bitacora/PreguntaSeguridad',ContrBitacora.postPrgunta)
+router.post('/bitacora/CorreoInvalido',ContrBitacora.postCorreoInvalido)
 router.post('/bitacora/RespuestaSeguridad',ContrBitacora.postPrgunta)
 //--Empleado--
 router.post('/bitacora/Empleado',ContrBitacora.postInsertModEmpleado)
 router.post('/bitacora/RegistroEmpleado',ContrBitacora.postInsertRegistroEmpleado)
 router.post('/bitacora/ListaEmpleado',ContrBitacora.postVerListaEmpleados)
 router.post('/bitacora/ActualizarEmpleado',ContrBitacora.postActualizarEmpleado)
+router.post('/bitacora/ErrorInsertEmpleado',ContrBitacora.postErrorInsertEmpleado)
 router.post('/bitacora/EliminarEmpleado',ContrBitacora.postEliminarEmpleado)
 //--Usuario--
-router.post('/bitacora/Usuario',ContrBitacora.postInsertUsuario)
+router.post('/bitacora/InsertUsuario',ContrBitacora.postInsertUsuario)
 router.post('/bitacora/ListaUsuario',ContrBitacora.postListaUsuario)
 router.post('/bitacora/ActualizacionUsuario',ContrBitacora.postActualizarUsuario)
 router.post('/bitacora/EliminarUsuario',ContrBitacora.postEliminarUsuario)

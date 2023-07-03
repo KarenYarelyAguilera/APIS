@@ -14,6 +14,19 @@ export const ContrBitacora = {
         }
     },
 
+//------Cierre de Secion -----
+
+    postCerrarSesion : async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postCerrarSesion ({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+
      //---------RECUPERACION DE CONTRASEÑA-----------------
 
     postInsertContra : async (req,res)=> {
@@ -25,6 +38,18 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+//Envio de correo invalido 
+
+    postCorreoInvalido : async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postCorreoInvalido({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     //-----------PREGUNTAS DE SEGURIDAD-----------
     //----Preguntas ---------
 
@@ -48,10 +73,6 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
-
-
-
-
 
 
  //---------------------MODULO EMPLEADO------------------
@@ -98,6 +119,17 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+
+        //-----------Actualizacion error --------
+        postErrorInsertEmpleado: async (req,res)=> {
+            try {
+                const{Id}=req.body;
+                const result = await ModBitacora.postErrorInsertEmpleado({Id});
+                res.status(201).json({ id: result.id });
+            } catch (error) {
+                console.log(error);
+            }
+        },
 
 //-----------Eliminar empleado--------
 
