@@ -32,6 +32,7 @@ import { ContrRol } from "../controllers/rol.js";
 import { ContrClientes } from "../controllers/clientes.js";
 
 import { TokenContr } from "../controllers/token.js";
+import { ContrAutoReg } from "../controllers/autoregistro.js";
 
 const router = express.Router();
 
@@ -47,6 +48,7 @@ router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
 router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
 router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
+
 
 //token
 router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
@@ -97,6 +99,10 @@ router.get('/Rol',ContrRol.getRol)
 router.post('/Rol/NuevoRol',ContrRol.postRol)
 router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
+
+//AutoRegistro
+router.post('/empleado/AutoRegistro', ContrAutoReg.postEmpleadoAutoRegistro)
+router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
 
 
@@ -197,6 +203,7 @@ router.get('/promocionmarca', ContrPromocionMarca.getPromoMarca)
 router.post('/promocionmarca/crear', ContrPromocionMarca.postPromoMarca)
 router.put('/promocionmarca/actualizar', ContrPromocionMarca.putPromoMarca)
 router.delete('/promocionmarca/eliminar', ContrPromocionMarca.delPromoMarca)
+
 
 //TipoPago
 router.get('/tipopago', ContrTipoPago.getTipoPagos)

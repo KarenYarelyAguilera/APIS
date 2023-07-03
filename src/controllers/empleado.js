@@ -70,8 +70,6 @@ export const ContrEmpleado = {
         res.json(gene);
     },
     
-
-
 };
 
 

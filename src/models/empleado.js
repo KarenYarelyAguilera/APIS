@@ -97,9 +97,6 @@ export const ModEmpleados = {
           throw new Error("Error al obtener lista de géneros");
         } 
     },
-
-
-
-
+   
 
 }
