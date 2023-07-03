@@ -24,7 +24,17 @@ export const ContrUsuario = {
   },
   putUsuario: async (req, res) => {
     try {
-      const {usuario,nombreUsuario,estadoUsuario,clave,idRol,correo,idEmpleado,idUsuario,} = req.body;
+      console.log(req.body);
+      const {
+        usuario,
+        nombreUsuario,
+        estadoUsuario,
+        clave,
+        idRol,
+        correo,
+        idEmpleado,
+        idUsuario,
+      } = req.body;
       const result = await ModUsuarios.putUpdateUsuario({
         usuario,
         nombreUsuario,
@@ -35,61 +45,104 @@ export const ContrUsuario = {
         idEmpleado,
         idUsuario,
       });
+
+      const data ={
+        clave:clave,
+        id:idUsuario,
+        autor:nombreUsuario
+      }
+
+      const result2= await ModUsuarios.postHistPasswrd(data)
+      console.log("ok");
       res.status(200).json({ response: "Ok" });
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
     }
   },
-  delUsuario: async (req,res)=>{
+  delUsuario: async (req, res) => {
     try {
-      const {id} = req.body
-      const result = await ModUsuarios.delUsuario({id})
-      res.status(200).json(result)
+      const { id } = req.body;
+      const result = await ModUsuarios.delUsuario({ id });
+      res.status(200).json(result);
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
     }
   },
-  getFechaExp:async (req,res)=>{
+  getFechaExp: async (req, res) => {
     try {
-      const {correo} = req.body
-      const result = await ModUsuarios.getFechaExp({correo})
-      res.status(200).json(result)
+      const { correo } = req.body;
+      const result = await ModUsuarios.getFechaExp({ correo });
+      res.status(200).json(result);
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
     }
   },
-  putUpdateEstado:async (req,res)=>{
+  putUpdateEstado: async (req, res) => {
     try {
-     const {correo}=req.body
-     const result = await ModUsuarios.putUpdateEstado({correo})
-     res.status(200).json(result) 
+      const { correo } = req.body;
+      const result = await ModUsuarios.putUpdateEstado({ correo });
+      res.status(200).json(result);
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
     }
   },
-  putUpdatePassword: async (req,res)=>{
+  compararContraVSHistorial: async (req, res) => {
     try {
-     const {correo,clave,id,autor}= req.body
-     const result = await ModUsuarios.putUpdatePassword({correo,clave})
-     const result2= await ModUsuarios.postHistPasswrd({id,clave,autor})
-     res.status(200).json(result) 
+      const { correo, clave, id } = req.body;
+      const result = await ModUsuarios.compararContraVSHistorial({
+        correo,
+        clave,
+        id,
+      });
+      res.status(200).json(result);
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
     }
   },
-  postHistPassword:async (req,res)=> {
+
+  ActualizarContra:async (req,res)=>{
     try {
-      const {id,clave,autor}=req.body
-      const result = await ModUsuarios.postHistPasswrd({id,clave,autor})
-      res.status(200).json(result)
+      const {correo,clave,id,autor}= req.body
+      const result = await ModUsuarios.putUpdatePassword({correo,clave})
+      const result2= await ModUsuarios.postHistPasswrd({id,clave,autor})
+      res.status(200).json(result) 
+     } catch (error) {
+       console.log(error);
+       throw new Error("Error al consumir el api");
+     }
+  },
+
+  //Update por recuperacion
+  putUpdatePassword: async (req, res) => {
+    try {
+      const { correo, clave, id, autor } = req.body;
+      console.log(req.body);
+
+      if (await ModUsuarios.compararContraVSHistorial({id,clave})===false) {
+        const result = await ModUsuarios.putUpdatePassword({ correo, clave });
+        await ModUsuarios.postHistPasswrd({ id, clave, autor });
+        res.status(200).json(result);
+      }else{
+        res.status(200).json(false)
+      }
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
     }
-  }
+  },
+  postHistPassword: async (req, res) => {
+    try {
+      const { id, clave, autor } = req.body;
+      const result = await ModUsuarios.postHistPasswrd({ id, clave, autor });
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al consumir el api");
+    }
+  },
 };

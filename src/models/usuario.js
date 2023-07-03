@@ -1,5 +1,6 @@
 import { connectDB } from "../config/Conn.js";
 import bcrypt from "bcrypt";
+import { ModLogin } from "./login.js";
 
 export const ModUsuarios = {
   getUsuarios: async () => {
@@ -27,7 +28,7 @@ export const ModUsuarios = {
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
-        "insert into TBL_MS_USUARIO (Usuario, Nombre_Usuario, Contrasenia,Id_Rol, Correo_Electronico, idEmpleado, fecha_creacion,fecha_modificacion)values (?, ?, ?, ?, ?, ?, current_timestamp(), current_timestamp());",
+        'insert into TBL_MS_USUARIO (Usuario, Nombre_Usuario, Contrasenia,Id_Rol, Correo_Electronico, idEmpleado, fecha_creacion,fecha_modificacion,Estado_Usuario,Fecha_Vencimiento)values (?, ?, ?, ?, ?, ?, current_timestamp(), current_timestamp(),"Nuevo",date_add(current_date(),interval 90 day));',
         [
           usuario.usuario,
           usuario.nombre,
@@ -43,19 +44,62 @@ export const ModUsuarios = {
       throw new Error("Error al crear usuarios");
     }
   },
+
+  compararContraVSHistorial: async (Usuario)=>{
+       
+    try {
+      const conexion = await connectDB();
+       const [filas] = await conexion.query(
+        "SELECT `Contrasenia` FROM tbl_ms_hist_contrasenia where `Id_Usuario`=? ORDER BY `Id_Historial` DESC ",
+        [
+          Usuario.id
+        ]
+      );
+
+      // const clavesota = {
+      //   psswrd:Usuario.clave
+      // }
+      // const clave = await ModLogin.passEncript(clavesota)
+
+      let data = {
+        psswrd: Usuario.clave,
+        hashed:filas[0].Contrasenia
+      }
+
+      return await ModLogin.comparePass(data)
+      
+
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al actualizar el usuario");
+    }
+    
+    
+
+
+  },
+
   putUpdateUsuario: async (usuario) => {
+    const rondasSalto = 10;
+    let hash
+    try {
+      const saltos = await bcrypt.genSalt(rondasSalto);
+       hash = await bcrypt.hash(usuario.clave, saltos);
+    } catch (error) {
+      throw new Error(error);
+    }  
+    console.log(hash);
     try {
       const conexion = await connectDB();
       const [filas] = await conexion.query(
-        "UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ?, idEmpleado = ? WHERE Id_usuario=?;",
+        "UPDATE tbl_ms_usuario set Usuario = ?, Nombre_Usuario = ?, Estado_Usuario = ?, Contrasenia = ?, Id_Rol = ?, Correo_Electronico = ? , Fecha_Vencimiento = date_add(current_date(),interval 90 day)  WHERE Id_usuario=?;",
         [
           usuario.usuario,
           usuario.nombreUsuario,
           usuario.estadoUsuario,
-          usuario.clave,
+          hash,
           usuario.idRol,
           usuario.correo,
-          usuario.idEmpleado,
           usuario.idUsuario,
         ]
       );

@@ -62,8 +62,8 @@ export const ContrLogin = {
   },
   test: async (req,res)=>{
     try {
-      const {psswrd} = req.body
-      const result = await ModLogin.passEncript({psswrd})
+      const {psswrd,hashed} = req.body
+      const result = await ModLogin.comparePass({psswrd,hashed})
       res.json(result)
     } catch (error) {
       

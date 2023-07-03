@@ -2,6 +2,11 @@ import express from "express";
 import { ContrUsuario } from "../controllers/usuario.js";
 import { ContrLogin } from "../controllers/login.js";
 import { Mailer } from "../controllers/correos.js";
+import { ContrCompraDetalle } from "../controllers/ComprasDetalle.js";
+import { ContrVentaDetalle } from "../controllers/VentasDetalles.js";
+import { ContrKardex } from "../controllers/kardex.js";
+import { ContrVentaDetalleDescuento } from "../controllers/VentasDetalleDescuentos.js";
+
 
 import { ContrGarantia } from "../controllers/garantia.js";
 import { ContrMarca } from "../controllers/marca.js";
@@ -28,6 +33,9 @@ import { ContrClientes } from "../controllers/clientes.js";
 import { ContrProveedor } from "../controllers/proveedor.js";
 import { ContrBitacora } from "../controllers/bitacora.js";
 
+import { TokenContr } from "../controllers/token.js";
+import { ContrAutoReg } from "../controllers/autoregistro.js";
+
 const router = express.Router();
 
 //usuario
@@ -39,8 +47,15 @@ router.delete('/usuario/delete',ContrUsuario.delUsuario)
 router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
+router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
+router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
 
+
+//token
+router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
+router.post('/token/verificar',TokenContr.verificarCodigo)
+router.post('/token/id',TokenContr.obtenerId)
 
 
 //correo
@@ -54,7 +69,7 @@ router.post('/login',ContrLogin.getUser)
 router.put('/login/PVez',ContrLogin.putLoginPVez)
 
 //test
-router.post('/test/encipt',ContrLogin.test)
+// router.post('/test/encipt',ContrLogin.test)
 
 //Clientes
 router.get('/clientes',ContrClientes.getClientes)
@@ -86,6 +101,10 @@ router.get('/Rol',ContrRol.getRol)
 router.post('/Rol/NuevoRol',ContrRol.postRol)
 router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
+
+//AutoRegistro
+router.post('/empleado/AutoRegistro', ContrAutoReg.postEmpleadoAutoRegistro)
+router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
 
 
@@ -226,12 +245,35 @@ router.post('/promocionmarca/crear', ContrPromocionMarca.postPromoMarca)
 router.put('/promocionmarca/actualizar', ContrPromocionMarca.putPromoMarca)
 router.delete('/promocionmarca/eliminar', ContrPromocionMarca.delPromoMarca)
 
+
 //TipoPago
 router.get('/tipopago', ContrTipoPago.getTipoPagos)
 router.post('/tipopago/crear', ContrTipoPago.postTipoPago)
 router.put('/tipopago/actualizar', ContrTipoPago.putTipoPago)
 router.delete('/tipopago/eliminar', ContrTipoPago.delTipoPago)
 
+
+//DetalleCompra
+ router.get('/ComprasDetalle',ContrCompraDetalle.GetCompraDetalle)
+ router.post('/ComprasDetalle',ContrCompraDetalle.PostCompraDetalle)
+ router.put('/ComprasDetalle',ContrCompraDetalle.PutCompraDetalle)
+ router.delete('/ComprasDetalle',ContrCompraDetalle.DeleteCompraDetalle)
+
+//DetalleVenta
+router.get('/VentasDetalles',ContrVentaDetalle.GetVentaDetalle)
+router.post('/VentasDetalles',ContrVentaDetalle.PostVentaDetalle)
+router.put('/VentasDetalles',ContrVentaDetalle.PutVentaDetalle)
+router.delete('/VentasDetalles',ContrVentaDetalle.DeleteVentaDetalle)
+
+//Kardex
+router.get('/kardex',ContrKardex.GetKardex)
+router.post('/kardex',ContrKardex.PostKardex)
+
+//VentaDetalleDescuento
+router.get('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.GetVentaDetalleDescuento)
+router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetalleDescuento)
+router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
+router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
 
 
 export default router
