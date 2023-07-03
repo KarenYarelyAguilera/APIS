@@ -45,6 +45,8 @@ router.delete('/usuario/delete',ContrUsuario.delUsuario)
 router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
+router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
+router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
 
 
@@ -65,7 +67,7 @@ router.post('/login',ContrLogin.getUser)
 router.put('/login/PVez',ContrLogin.putLoginPVez)
 
 //test
-router.post('/test/encipt',ContrLogin.test)
+// router.post('/test/encipt',ContrLogin.test)
 
 //Clientes
 router.get('/clientes',ContrClientes.getClientes)

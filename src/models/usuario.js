@@ -74,6 +74,9 @@ export const ModUsuarios = {
       throw new Error("Error al actualizar el usuario");
     }
     
+    
+
+
   },
 
   putUpdateUsuario: async (usuario) => {
