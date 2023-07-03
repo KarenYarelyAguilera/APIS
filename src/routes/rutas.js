@@ -30,8 +30,11 @@ import { ContrGestion } from "../controllers/Gestion.js";
 import { ContrVentas } from "../controllers/ventas.js";
 import { ContrRol } from "../controllers/rol.js";
 import { ContrClientes } from "../controllers/clientes.js";
+import { ContrProveedor } from "../controllers/proveedor.js";
+import { ContrBitacora } from "../controllers/bitacora.js";
 
 import { TokenContr } from "../controllers/token.js";
+import { ContrAutoReg } from "../controllers/autoregistro.js";
 
 const router = express.Router();
 
@@ -44,7 +47,10 @@ router.delete('/usuario/delete',ContrUsuario.delUsuario)
 router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
+router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
+router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
+
 
 //token
 router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
@@ -63,7 +69,7 @@ router.post('/login',ContrLogin.getUser)
 router.put('/login/PVez',ContrLogin.putLoginPVez)
 
 //test
-router.post('/test/encipt',ContrLogin.test)
+// router.post('/test/encipt',ContrLogin.test)
 
 //Clientes
 router.get('/clientes',ContrClientes.getClientes)
@@ -96,6 +102,9 @@ router.post('/Rol/NuevoRol',ContrRol.postRol)
 router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 
+//AutoRegistro
+router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
+
 
 
 
@@ -114,6 +123,9 @@ router.get('/preguntas',ContrPreguntas.getPreguntas)
 router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
+router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
+router.post('/correo/existe',ContrPreguntas.getUser) 
+
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
@@ -127,6 +139,45 @@ router.get('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.getdetallema
 router.post('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.InsertVentaDetalleMarca)
 router.put('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.UpdateVentaDetalleMarca)
 router.delete('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.DeleteVentaDetalleMarca)
+
+//PROVEEDORES
+router.get('/proveedor',ContrProveedor.getProveedores)
+router.post('/proveedor/NuevoProveedor',ContrProveedor.postInsertProveedor)
+router.put('/proveedor/ActualizarProveedor',ContrProveedor.putUpdateProveedor)
+router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
+
+
+//BITACORA
+//--Login y Recuperacion de Contraseña--
+router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
+router.post('/bitacora/Recuperacion',ContrBitacora.postInsertContra)
+router.post('/bitacora/PreguntaSeguridad',ContrBitacora.postPrgunta)
+router.post('/bitacora/RespuestaSeguridad',ContrBitacora.postPrgunta)
+//--Empleado--
+router.post('/bitacora/Empleado',ContrBitacora.postInsertModEmpleado)
+router.post('/bitacora/RegistroEmpleado',ContrBitacora.postInsertRegistroEmpleado)
+router.post('/bitacora/ListaEmpleado',ContrBitacora.postVerListaEmpleados)
+router.post('/bitacora/ActualizarEmpleado',ContrBitacora.postActualizarEmpleado)
+router.post('/bitacora/EliminarEmpleado',ContrBitacora.postEliminarEmpleado)
+//--Usuario--
+router.post('/bitacora/Usuario',ContrBitacora.postInsertUsuario)
+router.post('/bitacora/ListaUsuario',ContrBitacora.postListaUsuario)
+router.post('/bitacora/ActualizacionUsuario',ContrBitacora.postActualizarUsuario)
+router.post('/bitacora/EliminarUsuario',ContrBitacora.postEliminarUsuario)
+//--Venta--
+router.post('/bitacora/Venta',ContrBitacora.postModuloVenta)
+router.post('/bitacora/NuevaVenta',ContrBitacora.postInsertVenta)
+router.post('/bitacora/ListaVenta',ContrBitacora.postListaVenta)
+router.post('/bitacora/ActualizacionVenta',ContrBitacora.postActualizacionVenta)
+router.post('/bitacora/EliminarVenta',ContrBitacora.postEliminarVenta)
+//--Garantia--
+router.post('/bitacora/Garantia',ContrBitacora.postPantallaGarantia)
+router.post('/bitacora/NuevaGarantia',ContrBitacora.postInsertGarantia)
+router.post('/bitacora/ListaGarantia',ContrBitacora.postVerListaGarantia)
+router.post('/bitacora/ActualizacionGarantia',ContrBitacora.postActualizarGarantia)
+router.post('/bitacora/EliminarGarantia',ContrBitacora.postEliminarGarantia)
+
+
 
 
 //Garantias
@@ -195,6 +246,7 @@ router.get('/promocionmarca', ContrPromocionMarca.getPromoMarca)
 router.post('/promocionmarca/crear', ContrPromocionMarca.postPromoMarca)
 router.put('/promocionmarca/actualizar', ContrPromocionMarca.putPromoMarca)
 router.delete('/promocionmarca/eliminar', ContrPromocionMarca.delPromoMarca)
+
 
 //TipoPago
 router.get('/tipopago', ContrTipoPago.getTipoPagos)
