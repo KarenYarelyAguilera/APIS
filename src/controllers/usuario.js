@@ -94,19 +94,4 @@ export const ContrUsuario = {
     }
   },
 
-  postUsuarioAutoRegistro: async (req, res) => {
-    try {
-      const {usuario, nombre, clave, correo} = req.body;
-      const result = await ModUsuarios.postInsertUsuarioAutoRegistro({
-        usuario,
-        nombre,
-        clave,
-        correo,
-      });
-      res.status(201).json({ id: result.id });
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "Error creating user" });
-    }
-  },
 };

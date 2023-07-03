@@ -69,24 +69,7 @@ export const ContrEmpleado = {
         const gene = await ModEmpleados.getGenero();
         res.json(gene);
     },
-    postEmpleadoAutoRegistro: async (req, res) => {
-        try {
-            const {nombre, apellido, telEmple, idGenero, numId } = req.body;
-            const result = await ModEmpleados.postInsertEmpleadoAutoRegistro({
-                nombre,
-                apellido,
-                telEmple,
-                idGenero,
-                numId,
-            });
-            res.status(201).json({ id: result.id });
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ message: "Error al crear empleado autoregistro" });
-        }
-    },
-
-
+    
 };
 
 

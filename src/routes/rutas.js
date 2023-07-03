@@ -32,12 +32,13 @@ import { ContrRol } from "../controllers/rol.js";
 import { ContrClientes } from "../controllers/clientes.js";
 
 import { TokenContr } from "../controllers/token.js";
+import { ContrAutoReg } from "../controllers/autoregistro.js";
 
 const router = express.Router();
 
 //usuario
 router.get('/usuarios',ContrUsuario.getUsuarios)
-router.post('/usuarios',ContrUsuario.postUsuario)
+router.post('/usuario/insert',ContrUsuario.postUsuario)
 router.put('/usuario/update',ContrUsuario.putUsuario)
 
 router.delete('/usuario/delete',ContrUsuario.delUsuario)
@@ -45,7 +46,7 @@ router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
-router.post('/usuario/AutoRegistro', ContrUsuario.postUsuarioAutoRegistro)
+
 
 //token
 router.post('/token/enviarCodigo',TokenContr.enviarCodigo)
@@ -97,6 +98,9 @@ router.post('/Rol/NuevoRol',ContrRol.postRol)
 router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 
+//AutoRegistro
+router.post('/empleado/AutoRegistro', ContrAutoReg.postEmpleadoAutoRegistro)
+router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
 
 
@@ -109,7 +113,6 @@ router.put('/empleado/actualizar',ContrEmpleado.putEmpleado)
 router.delete('/empleado/eliminar',ContrEmpleado.delEmpleado)
 router.get('/empleado/sucursal',ContrEmpleado.getSucursales)
 router.get('/empleado/genero',ContrEmpleado.getGeneros)
-router.post('/empleado/AutoRegistro', ContrEmpleado.postEmpleadoAutoRegistro)
 
 
 //preguntas

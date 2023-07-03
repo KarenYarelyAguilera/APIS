@@ -97,26 +97,6 @@ export const ModEmpleados = {
           throw new Error("Error al obtener lista de géneros");
         } 
     },
-    postInsertEmpleadoAutoRegistro: async (empleado) => {
-      try {
-      const conexion = await connectDB();
-        const [filas] = await conexion.query("INSERT INTO  tbl_empleado (nombre, apellido, telefonoEmpleado,IdGenero, numeroIdentidad) VALUES(?,?,?,?,?);",
-          [
-            empleado.nombre,
-            empleado.apellido,
-            empleado.telEmple,
-            empleado.idGenero,
-            empleado.numId,
-          ]
-        );
-        return { id: filas.insertId };
-      } catch (error) {
-        console.log(error);
-        throw new Error("Error al crear empleado autoregistrado");
-      }
-  },
-
-
-
+   
 
 }
