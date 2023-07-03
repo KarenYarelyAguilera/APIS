@@ -103,7 +103,6 @@ router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 
 //AutoRegistro
-router.post('/empleado/AutoRegistro', ContrAutoReg.postEmpleadoAutoRegistro)
 router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
 
