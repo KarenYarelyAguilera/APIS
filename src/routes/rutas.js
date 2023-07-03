@@ -44,6 +44,8 @@ router.delete('/usuario/delete',ContrUsuario.delUsuario)
 router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
+router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
+router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
 router.post('/usuario/histPasswrd',ContrUsuario.postHistPassword)
 
 //token
@@ -63,7 +65,7 @@ router.post('/login',ContrLogin.getUser)
 router.put('/login/PVez',ContrLogin.putLoginPVez)
 
 //test
-router.post('/test/encipt',ContrLogin.test)
+// router.post('/test/encipt',ContrLogin.test)
 
 //Clientes
 router.get('/clientes',ContrClientes.getClientes)
@@ -114,6 +116,9 @@ router.get('/preguntas',ContrPreguntas.getPreguntas)
 router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
+router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
+router.post('/correo/existe',ContrPreguntas.getUser) 
+
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)

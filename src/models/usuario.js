@@ -44,6 +44,41 @@ export const ModUsuarios = {
       throw new Error("Error al crear usuarios");
     }
   },
+
+  compararContraVSHistorial: async (Usuario)=>{
+       
+    try {
+      const conexion = await connectDB();
+       const [filas] = await conexion.query(
+        "SELECT `Contrasenia` FROM tbl_ms_hist_contrasenia where `Id_Usuario`=? ORDER BY `Id_Historial` DESC ",
+        [
+          Usuario.id
+        ]
+      );
+
+      // const clavesota = {
+      //   psswrd:Usuario.clave
+      // }
+      // const clave = await ModLogin.passEncript(clavesota)
+
+      let data = {
+        psswrd: Usuario.clave,
+        hashed:filas[0].Contrasenia
+      }
+
+      return await ModLogin.comparePass(data)
+      
+
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al actualizar el usuario");
+    }
+    
+    
+
+
+  },
+
   putUpdateUsuario: async (usuario) => {
     const rondasSalto = 10;
     let hash
