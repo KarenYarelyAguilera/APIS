@@ -166,6 +166,21 @@ export const ModUsuarios = {
     }
   },
 
+  putUpdateEstadoActivo: async (usuario) => {
+    try {
+      const conexion = await connectDB();
+      const [filas] = await conexion.query(
+        'UPDATE tbl_ms_usuario set `Estado_Usuario` ="Activo" where `Correo_Electronico` = ?;',
+        [usuario.correo]
+      );
+      return filas;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al actualizar el estado");
+    }
+  },
+  
+
   putUpdatePassword: async (usuario) => {
     try {
       const clave = { psswrd: usuario.clave };
