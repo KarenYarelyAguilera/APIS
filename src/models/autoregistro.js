@@ -10,9 +10,9 @@ export const ModAutoReg = {
             [
               empleado.nombre,
               empleado.apellido,
-              empleado.telEmple,
-              empleado.idGenero,
-              empleado.numId,
+              empleado.telefonoEmpleado,
+              empleado.IdGenero,
+              empleado.numeroIdentidad,
             ]
           );
           return { id: filas.insertId };
@@ -34,12 +34,13 @@ export const ModAutoReg = {
         try {
           const conexion = await connectDB();
           const [filas] = await conexion.query(
-            "insert into TBL_MS_USUARIO (Usuario, Nombre_Usuario, Contrasenia, Id_Rol, Correo_Electronico, Fecha_Vencimiento, idEmpleado, fecha_creacion,fecha_modificacion) values (?, ?, ?, 3, ? ,date_add(current_date(),interval 90 day), last_insert_id(), current_timestamp(), current_timestamp());",
+            "insert into TBL_MS_USUARIO (Usuario, Nombre_Usuario, Contrasenia, Id_Rol, Correo_Electronico, Fecha_Vencimiento, idEmpleado, fecha_creacion,fecha_modificacion) values (?, ?, ?, 3, ? ,date_add(current_date(),interval 90 day), ?, current_timestamp(), current_timestamp());",
             [
               usuario.usuario,
               usuario.nombre,
               hash,
               usuario.correo,
+              usuario.idEmpleado
             ]
           );
           return { id: filas.insertId };
