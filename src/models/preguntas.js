@@ -45,6 +45,7 @@ export const ModPreguntas = {
           const [filas] = await conexion.query("INSERT INTO tbl_ms_preguntas_usuario (Id_Usuario,Respuesta,creado_por,fecha_creacion) values(?,?,?,?);",
             [
                 respuestas.idUser,
+                respuestas.idPregunta,
                 respuestas.respuesta,
                 respuestas.creadoPor,
                 respuestas.fechaCrea,
