@@ -90,6 +90,16 @@ export const ContrUsuario = {
       throw new Error("Error al consumir el api");
     }
   },
+  putUpdateEstadoActivo: async (req, res) => {
+    try {
+      const { correo } = req.body;
+      const result = await ModUsuarios.putUpdateEstadoActivo({ correo });
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al consumir el api");
+    }
+  },
   compararContraVSHistorial: async (req, res) => {
     try {
       const { correo, clave, id } = req.body;

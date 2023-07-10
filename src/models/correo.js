@@ -6,7 +6,7 @@ const enviarMail = async (mail) => {
     port: 587,
     auth: {
       user: "jaredmoisesalgadortiz@gmail.com",
-      
+      pass: "jqwvepwixhbupffm",
     },
   };
 
