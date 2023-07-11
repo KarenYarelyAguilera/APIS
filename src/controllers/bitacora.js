@@ -16,15 +16,15 @@ export const ContrBitacora = {
 
 //------Cierre de Secion -----
 
-    postCerrarSesion : async (req,res)=> {
-        try {
-            const{Id}=req.body;
-            const result = await ModBitacora.postCerrarSesion ({Id});
-            res.status(201).json({ id: result.id });
-        } catch (error) {
-            console.log(error);
-        }
-    },
+postCerrarSesion : async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postCerrarSesion ({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
 
 
      //---------RECUPERACION DE CONTRASEÑA-----------------
