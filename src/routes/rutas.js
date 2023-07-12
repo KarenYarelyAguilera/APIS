@@ -117,6 +117,7 @@ router.put('/empleado/actualizar',ContrEmpleado.putEmpleado)
 router.delete('/empleado/eliminar',ContrEmpleado.delEmpleado)
 router.get('/empleado/sucursal',ContrEmpleado.getSucursales)
 router.get('/empleado/genero',ContrEmpleado.getGeneros)
+router.post('/empleado/RegistroInvalido',ContrEmpleado.getEmpleadoExist) //Para consultar empleado existente
 
 
 //preguntas
