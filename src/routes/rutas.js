@@ -35,6 +35,7 @@ import { ContrBitacora } from "../controllers/bitacora.js";
 
 import { TokenContr } from "../controllers/token.js";
 import { ContrAutoReg } from "../controllers/autoregistro.js";
+import { ContrEstado } from "../controllers/estado.js";
 
 const router = express.Router();
 
@@ -126,7 +127,6 @@ router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
 router.post('/correo/existe',ContrPreguntas.getUser) 
-
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
@@ -278,5 +278,8 @@ router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetal
 router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
 router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
 
+//Estados
+router.put('/Estado/Activo',ContrEstado.updActivo)
+router.put('/Estado/Inactivo',ContrEstado.updInactivo)
 
 export default router
