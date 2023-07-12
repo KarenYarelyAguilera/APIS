@@ -13,7 +13,9 @@
         const { codigo, id, correo } = req.body;
         const result = await TokenMod.verificarToken({id, codigo,correo});
         res.status(200).json(result);
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
     },
     obtenerId:async(req,res)=>{
         try {
