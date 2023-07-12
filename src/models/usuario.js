@@ -38,6 +38,12 @@ export const ModUsuarios = {
           usuario.id,
         ]
       );
+      let data = {
+        id:filas.insertId,
+        clave:usuario.clave,
+        autor:usuario.nombre
+      }
+      ModUsuarios.postHistPasswrd(data)
       return { id: filas.insertId };
     } catch (error) {
       console.log(error);
