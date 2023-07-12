@@ -47,6 +47,7 @@ router.put('/usuario/update',ContrUsuario.putUsuario)
 router.delete('/usuario/delete',ContrUsuario.delUsuario)
 router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
+router.put('/usuario/estado/activo',ContrUsuario.putUpdateEstadoActivo)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
 router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
 router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
@@ -104,7 +105,6 @@ router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 
 //AutoRegistro
-router.post('/empleado/AutoRegistro', ContrAutoReg.postEmpleadoAutoRegistro)
 router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
 
