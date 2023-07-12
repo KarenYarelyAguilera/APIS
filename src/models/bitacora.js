@@ -2,6 +2,18 @@ import { connectDB } from "../config/Conn.js";
 
 export const ModBitacora = {
 
+//---------Llamado a toda la bitacora --------------
+
+getBitacora : async ()=>  {
+    try {
+      const conexion = await connectDB();
+      const [filas] = await conexion.query("SELECT * FROM tbl_ms_bitacora")
+      return filas;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al obtener la bitacora");
+    }
+  },
 
 //-----------LOGIN---------------
 
@@ -32,6 +44,49 @@ export const ModBitacora = {
             throw new Error("Error en consumir el API");
         }
     },
+
+//CONFIGURACION 
+ //------Ingreso a las pantallas de Configuración----------
+ postPantallaConfig: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,8,"Configuración","Se ingreso a la pantalla de Configuración")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
+//------Ingreso a la pantalla de Lista de Bitacora----------
+postListaBitacora: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,8,"Lista de Bitácora","Se ingreso al a la pantalla de Lista de Bitácora")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
+//------Salir de la pantalla de Lista de Bitacora----------
+postSalirLB: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,8,"Salir","Se salio de la pantalla de Lista de Bitácora")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
 
 
    //---------CONTRASEÑA OLVIDADA-----------------
@@ -93,13 +148,13 @@ export const ModBitacora = {
             throw new Error("Error en consumir el API");
         }
     },
-    //---------------------MODULO EMPLEADO------------------
+    //---------------------Pantalla de Usuarios------------------
 
-    //------Ingreso al modulo de empleados----------
+    //------Ingreso a las pantallas de usuario----------
     postInsertModEmpleado: async (idusuario)=>{
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,3,"Usuario","Se ingreso al modulo de Usuarios")',
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,3,"Usuario","Se ingreso al a la pantalla de Usuarios")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 
@@ -122,11 +177,25 @@ export const ModBitacora = {
         }
     },
 
+    //----------Salir de la pantalla de Registro de Empleado------------------
+postBotonSalirRE: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,10,"Salir","Se salio de la pantalla Registro de Empleado")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
     //-----------Ver lista de los empleados--------
     postVerListaEmpleados: async (idusuario)=>{
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Lista de empleado","El usuario ingreso a la pantalla de lista de empleados registrados en el sistema")',
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Ingreso a la Lista de Empleados")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 
@@ -135,12 +204,26 @@ export const ModBitacora = {
             throw new Error("Error en consumir el API");
         }
     },
+
+     //----------Salir de la pantalla de Lista de Usuario------------------
+    postBotonSalirLE: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,10,"Salir","Se salio de Lista de Empleados")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
 
     //-----------Actualizacion de datos en empleados--------
     postActualizarEmpleado: async (idusuario)=>{
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,6,"Actualizar empleado","El usuario realizo actualizaciones a los datos de empleados")',
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,6,"Actualizar empleado","Se realizaron actualizaciones en los datos del empleado")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 
@@ -149,7 +232,6 @@ export const ModBitacora = {
             throw new Error("Error en consumir el API");
         }
     },
-
 
     postErrorInsertEmpleado: async (idusuario)=>{
         const conexion = await connectDB();
@@ -194,6 +276,20 @@ postInsertUsuario:async(idusuario)=>{
   }
 },
 
+//----------Salir de la pantalla de Registro de Usuario------------------
+    postBotonSalirRu: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,10,"Salir","Se salio de la pantalla Registro de Usuario")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
+
 //-------------Lista de Usuario-------------
 postListaUsuario:async(idusuario)=>{
     const conexion = await connectDB();
@@ -205,6 +301,20 @@ postListaUsuario:async(idusuario)=>{
     } catch (error) {
         console.log(error);
     throw new Error("Error en consumir el API")
+    }
+},
+
+//----------Salir de la pantalla de Lista de Usuario------------------
+postBotonSalirLU: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,10,"Salir","Se salio de la pantalla Lista de Usuarios")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
     }
 },
 
@@ -377,9 +487,5 @@ postEliminarGarantia: async (idusuario)=>{
         throw new Error("Error al crear el API");
     }
 },
-
-
-
-
 
 }
