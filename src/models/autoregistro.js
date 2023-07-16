@@ -1,5 +1,6 @@
 import { connectDB } from "../config/Conn.js"
 import bcrypt from "bcrypt";
+import { ModUsuarios } from "./usuario.js";
 
 export const ModAutoReg = {
 
@@ -43,6 +44,13 @@ export const ModAutoReg = {
               usuario.idEmpleado
             ]
           );
+          const data ={
+            clave:usuario.clave,
+            id:filas.insertId,
+            autor:usuario.usuario
+          }
+    
+          const result2= await ModUsuarios.postHistPasswrd(data)
           return { id: filas.insertId };
         } catch (error) {
           console.log(error);
