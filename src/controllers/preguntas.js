@@ -26,12 +26,14 @@ export const ContrPreguntas = {
     },
     postRespuestas: async (req, res) => {
         try {
-            const { idUser, respuesta, creadoPor, fechaCrea} = req.body;
+            const { idUser, idPregunta, respuesta, creadoPor, fechaCrea} = req.body;
+            console.log(req.body);
             const result = await ModPreguntas.postInsertRespuestas({
-                idUser,
-                respuesta,
-                creadoPor,
-                fechaCrea
+                idUser:idUser,
+                idPregunta:idPregunta,
+                respuesta:respuesta,
+                creadoPor:creadoPor,
+                fechaCrea:fechaCrea
                 
             });
             res.status(201).json({ id: result.id });
@@ -67,6 +69,3 @@ export const ContrPreguntas = {
 
 
 };
-
-
-
