@@ -35,6 +35,7 @@ import { ContrBitacora } from "../controllers/bitacora.js";
 
 import { TokenContr } from "../controllers/token.js";
 import { ContrAutoReg } from "../controllers/autoregistro.js";
+import { ContrExpediente } from "../controllers/expediente.js";
 
 const router = express.Router();
 
@@ -290,6 +291,12 @@ router.get('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.GetVentaDetalle
 router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetalleDescuento)
 router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
 router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
+
+//Expediente 
+router.get('/Expediente',ContrExpediente.getExpediente)
+router.post('/Expediente/NuevoExpediente',ContrExpediente.postInsertExpediente)
+router.put('/Expediente/UpdateExpediente',ContrExpediente.putUpdateExpediente)
+router.delete('/Expediente/DeleteExpediente',ContrExpediente.deleteExpediente)
 
 
 export default router
