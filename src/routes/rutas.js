@@ -34,8 +34,11 @@ import { ContrProveedor } from "../controllers/proveedor.js";
 import { ContrBitacora } from "../controllers/bitacora.js";
 
 import { TokenContr } from "../controllers/token.js";
-import { ContrAutoReg } from "../controllers/autoregistro.js";
+import { ContrExpediente } from "../controllers/expediente.js";
+import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
+
 import { ContrEstado } from "../controllers/estado.js";
+
 
 const router = express.Router();
 
@@ -126,7 +129,7 @@ router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
-router.post('/correo/existe',ContrPreguntas.getUser) 
+router.post('/correo/existe',ContrPreguntas.getUser)  
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
@@ -149,20 +152,33 @@ router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
 
 
 //BITACORA
+//LLamado a toda la bitacora 
+router.get('/bitacora',ContrBitacora.getBitacora)
+//--------Configuracion-----
+router.post('/bitacora/Configuracion',ContrBitacora.postPantallaConfig)
+router.post('/bitacora/ListaBitacora',ContrBitacora.postListaBitacora)
+router.post('/bitacora/SalirListaBitacora',ContrBitacora.postSalirLB)
 //--Login y Recuperacion de Contraseña--
 router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
-router.post('/bitacora/Recuperacion',ContrBitacora.postInsertContra)
+router.post('/bitacora/Cierre',ContrBitacora.postCerrarSesion)
+router.post('/Recuperacionbitacora/',ContrBitacora.postInsertContra)
 router.post('/bitacora/PreguntaSeguridad',ContrBitacora.postPrgunta)
+router.post('/bitacora/CorreoInvalido',ContrBitacora.postCorreoInvalido)
 router.post('/bitacora/RespuestaSeguridad',ContrBitacora.postPrgunta)
 //--Empleado--
 router.post('/bitacora/Empleado',ContrBitacora.postInsertModEmpleado)
 router.post('/bitacora/RegistroEmpleado',ContrBitacora.postInsertRegistroEmpleado)
+router.post('/bitacora/SalirRegistroEmpleado',ContrBitacora.postBotonSalirRE)
 router.post('/bitacora/ListaEmpleado',ContrBitacora.postVerListaEmpleados)
+router.post('/bitacora/SalirListaEmpleado',ContrBitacora.postBotonSalirLE)
 router.post('/bitacora/ActualizarEmpleado',ContrBitacora.postActualizarEmpleado)
+router.post('/bitacora/ErrorInsertEmpleado',ContrBitacora.postErrorInsertEmpleado)
 router.post('/bitacora/EliminarEmpleado',ContrBitacora.postEliminarEmpleado)
 //--Usuario--
-router.post('/bitacora/Usuario',ContrBitacora.postInsertUsuario)
+router.post('/bitacora/InsertUsuario',ContrBitacora.postInsertUsuario)
+router.post('/bitacora/SalirRegistroUsuario',ContrBitacora.postBotonSalirRu)
 router.post('/bitacora/ListaUsuario',ContrBitacora.postListaUsuario)
+router.post('/bitacora/SalirListaUsuarios',ContrBitacora.postBotonSalirLU)
 router.post('/bitacora/ActualizacionUsuario',ContrBitacora.postActualizarUsuario)
 router.post('/bitacora/EliminarUsuario',ContrBitacora.postEliminarUsuario)
 //--Venta--
@@ -278,8 +294,20 @@ router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetal
 router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
 router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
 
+router.get('/Expediente',ContrExpediente.getExpediente)
+router.post('/Expediente/NuevoExpediente',ContrExpediente.postInsertExpediente)
+//router.put('/Expediente/UpdateExpediente',ContrExpediente.putUpdateExpediente)
+router.delete('/Expediente/DeleteExpediente',ContrExpediente.deleteExpediente)
+
+//ExpedienteDetalle
+router.get('/ExpedienteDetalle',ContrExpedineteDetalle.getExpedienteDetalle)
+router.post('/ExpedienteDetalle/NuevoExpedinteDetalle',ContrExpedineteDetalle.postExpedienteDetalle)
+router.put('/ExpedienteDetalle/UpdateExpedinteDetalle',ContrExpedineteDetalle.putExpedienteDetalle)
+router.delete('/ExpedienteDetalle/DeleteExpedinteDetalle',ContrExpedineteDetalle.deleteExpedienteDetalle)
+
 //Estados
 router.put('/Estado/Activo',ContrEstado.updActivo)
 router.put('/Estado/Inactivo',ContrEstado.updInactivo)
+ 
 
 export default router
