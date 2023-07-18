@@ -31,9 +31,9 @@ try {
 },
 
 // putUpdateExpediente: async (compra)=>{
-//     const conexion = await connectDB();
 //   try {
-//     const[filas]=await conexion.query ("UPDATE tbl_expediente SET  fechaCreacion=?, IdCliente=?, IdEmpleado=? where  IdExpediente =?;",
+//     const conexion = await connectDB();
+//     const[filas]=await conexion.query ("UPDATE tbl_expediente SET fechaCreacion=?, IdCliente=?, IdEmpleado=? where  IdExpediente =?;",
 //     [
 //         expediente.fechaCreacion, 
 //         expediente.IdCliente, 
