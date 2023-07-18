@@ -295,7 +295,6 @@ router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaD
 //Expediente 
 router.get('/Expediente',ContrExpediente.getExpediente)
 router.post('/Expediente/NuevoExpediente',ContrExpediente.postInsertExpediente)
-router.put('/Expediente/UpdateExpediente',ContrExpediente.putUpdateExpediente)
 router.delete('/Expediente/DeleteExpediente',ContrExpediente.deleteExpediente)
 
 
