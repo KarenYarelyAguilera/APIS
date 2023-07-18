@@ -34,9 +34,11 @@ import { ContrProveedor } from "../controllers/proveedor.js";
 import { ContrBitacora } from "../controllers/bitacora.js";
 
 import { TokenContr } from "../controllers/token.js";
-import { ContrAutoReg } from "../controllers/autoregistro.js";
 import { ContrExpediente } from "../controllers/expediente.js";
 import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
+
+import { ContrEstado } from "../controllers/estado.js";
+
 
 const router = express.Router();
 
@@ -48,6 +50,7 @@ router.put('/usuario/update',ContrUsuario.putUsuario)
 router.delete('/usuario/delete',ContrUsuario.delUsuario)
 router.get('/usuario/fechaExp',ContrUsuario.getFechaExp)
 router.put('/usuario/estado',ContrUsuario.putUpdateEstado)
+router.put('/usuario/estado/activo',ContrUsuario.putUpdateEstadoActivo)
 router.put('/usuario/UpdContra',ContrUsuario.putUpdatePassword)
 router.put('/usuario/ActualizarContra',ContrUsuario.ActualizarContra)//por algun pedo futuro. Att: Jared del pasado
 router.post('/usuario/compararContra',ContrUsuario.compararContraVSHistorial)
@@ -105,7 +108,6 @@ router.put('/Rol/RolActualizado',ContrRol.putUpdateRol)
 router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 
 //AutoRegistro
-router.post('/empleado/AutoRegistro', ContrAutoReg.postEmpleadoAutoRegistro)
 router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
 
@@ -127,8 +129,7 @@ router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
-router.post('/correo/existe',ContrPreguntas.getUser) 
-
+router.post('/correo/existe',ContrPreguntas.getUser)  
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
@@ -293,7 +294,6 @@ router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetal
 router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
 router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
 
-//Expediente 
 router.get('/Expediente',ContrExpediente.getExpediente)
 router.post('/Expediente/NuevoExpediente',ContrExpediente.postInsertExpediente)
 //router.put('/Expediente/UpdateExpediente',ContrExpediente.putUpdateExpediente)
@@ -304,5 +304,10 @@ router.get('/ExpedienteDetalle',ContrExpedineteDetalle.getExpedienteDetalle)
 router.post('/ExpedienteDetalle/NuevoExpedinteDetalle',ContrExpedineteDetalle.postExpedienteDetalle)
 router.put('/ExpedienteDetalle/UpdateExpedinteDetalle',ContrExpedineteDetalle.putExpedienteDetalle)
 router.delete('/ExpedienteDetalle/DeleteExpedinteDetalle',ContrExpedineteDetalle.deleteExpedienteDetalle)
+
+//Estados
+router.put('/Estado/Activo',ContrEstado.updActivo)
+router.put('/Estado/Inactivo',ContrEstado.updInactivo)
+ 
 
 export default router
