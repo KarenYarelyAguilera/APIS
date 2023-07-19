@@ -16,12 +16,12 @@ getProveedores:async()=> {
 postInsertProveedor:async(proveedor)=>{
     const conexion = await connectDB();
     try {
-        const[filas]=await conexion.query("INSERT INTO tbl_proveedor(nombreProveedor,encargado,pais,ciudad,codigoPostal,direccion,telefono,correoElectronico)  VALUES(?,?,?,?,?,?,?,?);",
+        const[filas]=await conexion.query("INSERT INTO tbl_proveedor(CiaProveedora,encargado,pais,ciudad,codigoPostal,direccion,telefono,correoElectronico)  VALUES(?,?,?,?,?,?,?,?);",
         [
-            proveedor.nombreProveedor,
+            proveedor.CiaProveedora,
             proveedor.encargado,
             proveedor.pais,
-            proveedor.cuidad,
+            proveedor.ciudad,
             proveedor.codigoPostal,
             proveedor.direccion,
             proveedor.telefono,
