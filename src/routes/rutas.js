@@ -36,6 +36,7 @@ import { ContrBitacora } from "../controllers/bitacora.js";
 import { TokenContr } from "../controllers/token.js";
 import { ContrAutoReg } from "../controllers/autoregistro.js";
 import { ContrEstado } from "../controllers/estado.js";
+import { ContrSucursal } from "../controllers/sucursal.js";
 
 const router = express.Router();
 
@@ -248,6 +249,12 @@ router.get('/promocionmarca', ContrPromocionMarca.getPromoMarca)
 router.post('/promocionmarca/crear', ContrPromocionMarca.postPromoMarca)
 router.put('/promocionmarca/actualizar', ContrPromocionMarca.putPromoMarca)
 router.delete('/promocionmarca/eliminar', ContrPromocionMarca.delPromoMarca)
+
+//Sucursal
+router.get('/sucursales',ContrSucursal.getSucursales)
+router.post('/sucursal/crear',ContrSucursal.postInsertSucursal)
+router.put('/sucursal/actualizar',ContrSucursal.putUpdateSucursal)
+router.delete('/sucursal/eliminar',ContrSucursal.deleteSucursal)
 
 
 //TipoPago
