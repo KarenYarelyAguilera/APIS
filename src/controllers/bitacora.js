@@ -2,6 +2,7 @@ import { ModBitacora } from "../models/bitacora.js";
 
 export const ContrBitacora = {
 
+
 //----------Llamado a toda la bitacora---------------------
 
 getBitacora: async (req,res)=> {
@@ -12,6 +13,7 @@ getBitacora: async (req,res)=> {
 },
 
 //-----------LOGIN---------------
+
 
     postInsertLogin : async (req,res)=> {
         try {

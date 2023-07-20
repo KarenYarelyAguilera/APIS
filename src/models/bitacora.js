@@ -2,6 +2,7 @@ import { connectDB } from "../config/Conn.js";
 
 export const ModBitacora = {
 
+
 //---------Llamado a toda la bitacora --------------
 
 getBitacora : async ()=>  {
@@ -14,6 +15,7 @@ getBitacora : async ()=>  {
       throw new Error("Error al obtener la bitacora");
     }
   },
+
 
 //-----------LOGIN---------------
 
