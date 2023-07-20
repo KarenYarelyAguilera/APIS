@@ -2,6 +2,17 @@ import { connectDB } from "../config/Conn.js";
 
 export const ModBitacora = {
 
+    getBitacora: async () => {
+        try {
+            const conexion = await connectDB();
+            const [filas] = await conexion.query("select * from tbl_ms_bitacora;")
+            return filas;
+        } catch (error) {
+            console.long(error);
+            throw new error("Error al consumir el API")
+        }
+    },
+
 
 //-----------LOGIN---------------
 

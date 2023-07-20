@@ -151,6 +151,7 @@ router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
 
 
 //BITACORA
+router.get('/bitacoralista', ContrBitacora.getBitacora)
 //--Login y Recuperacion de Contraseña--
 router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
 router.post('/bitacora/Recuperacion',ContrBitacora.postInsertContra)

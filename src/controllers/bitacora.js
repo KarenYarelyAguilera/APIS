@@ -2,6 +2,12 @@ import { ModBitacora } from "../models/bitacora.js";
 
 export const ContrBitacora = {
 
+    getBitacora:async(req,res)=>{
+        const bitacora =await ModBitacora.getBitacora()
+        res.json(bitacora)
+    },
+
+
     //-----------LOGIN---------------
 
     postInsertLogin : async (req,res)=> {
