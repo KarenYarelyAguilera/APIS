@@ -38,6 +38,7 @@ import { ContrExpediente } from "../controllers/expediente.js";
 import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
 
 import { ContrEstado } from "../controllers/estado.js";
+import { ContrSucursal } from "../controllers/sucursal.js";
 
 
 const router = express.Router();
@@ -121,6 +122,7 @@ router.put('/empleado/actualizar',ContrEmpleado.putEmpleado)
 router.delete('/empleado/eliminar',ContrEmpleado.delEmpleado)
 router.get('/empleado/sucursal',ContrEmpleado.getSucursales)
 router.get('/empleado/genero',ContrEmpleado.getGeneros)
+router.post('/empleado/RegistroInvalido',ContrEmpleado.getEmpleadoExist) //Para consultar empleado existente
 
 
 //preguntas
@@ -152,12 +154,14 @@ router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
 
 
 //BITACORA
+
 //LLamado a toda la bitacora 
 router.get('/bitacora',ContrBitacora.getBitacora)
 //--------Configuracion-----
 router.post('/bitacora/Configuracion',ContrBitacora.postPantallaConfig)
 router.post('/bitacora/ListaBitacora',ContrBitacora.postListaBitacora)
 router.post('/bitacora/SalirListaBitacora',ContrBitacora.postSalirLB)
+
 //--Login y Recuperacion de Contraseña--
 router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
 router.post('/bitacora/Cierre',ContrBitacora.postCerrarSesion)
@@ -263,6 +267,12 @@ router.get('/promocionmarca', ContrPromocionMarca.getPromoMarca)
 router.post('/promocionmarca/crear', ContrPromocionMarca.postPromoMarca)
 router.put('/promocionmarca/actualizar', ContrPromocionMarca.putPromoMarca)
 router.delete('/promocionmarca/eliminar', ContrPromocionMarca.delPromoMarca)
+
+//Sucursal
+router.get('/sucursales',ContrSucursal.getSucursales)
+router.post('/sucursal/crear',ContrSucursal.postInsertSucursal)
+router.put('/sucursal/actualizar',ContrSucursal.putUpdateSucursal)
+router.delete('/sucursal/eliminar',ContrSucursal.deleteSucursal)
 
 
 //TipoPago
