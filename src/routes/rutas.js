@@ -40,6 +40,7 @@ const router = express.Router();
 
 //usuario
 router.get('/usuarios',ContrUsuario.getUsuarios)
+router.post('/usuario',ContrUsuario.getUsuario)
 router.post('/usuario/insert',ContrUsuario.postUsuario)
 router.put('/usuario/update',ContrUsuario.putUsuario)
 
@@ -126,6 +127,7 @@ router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
 router.post('/correo/existe',ContrPreguntas.getUser) 
+router.post('/pregYresp',ContrPreguntas.getPyR)
 
 
 //ventaDetallePromocion

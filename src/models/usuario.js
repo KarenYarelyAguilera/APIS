@@ -15,6 +15,19 @@ export const ModUsuarios = {
       throw new Error("Error al obtener usuarios");
     }
   },
+  getUsuario: async(usuario)=>{
+    try {
+        const conexion = await connectDB()
+        const [filas] = await conexion.query("SELECT u.`Id_Usuario`, u.`Contrasenia`, u.`Nombre_Usuario`, e.nombre, e.apellido, e.`numeroIdentidad`,r.`Rol`, u.`Correo_Electronico`, u.`idEmpleado` FROM tbl_ms_usuario as u INNER JOIN tbl_empleado as e on  u.`idEmpleado`=e.`idEmpleado`  INNER JOIN tbl_ms_roles as r on  u.`Id_Rol`=r.`Id_Rol` WHERE u.`Correo_Electronico`=? ",
+        [usuario.Correo_Electronico] );
+       
+        return filas[0];
+        
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al traer usuario")
+    }
+},
 
   postInsertUsuario: async (usuario) => {
     const rondasSalto = 10;
