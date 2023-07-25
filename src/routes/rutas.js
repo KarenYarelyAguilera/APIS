@@ -39,6 +39,7 @@ import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
 
 import { ContrEstado } from "../controllers/estado.js";
 import { ContrSucursal } from "../controllers/sucursal.js";
+import{ContrAutoReg} from "../controllers/autoregistro.js"
 
 
 const router = express.Router();
@@ -303,6 +304,8 @@ router.get('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.GetVentaDetalle
 router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetalleDescuento)
 router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
 router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
+
+//Expediente
 
 router.get('/Expediente',ContrExpediente.getExpediente)
 router.post('/Expediente/NuevoExpediente',ContrExpediente.postInsertExpediente)
