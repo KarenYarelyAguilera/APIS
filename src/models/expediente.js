@@ -2,15 +2,17 @@ import { connectDB } from "../config/Conn.js";
 
 export const ModExpediente = {
 
+
     getExpediente :async ()=> {
  try {
     const conexion = await connectDB ();
-    const [filas]= await conexion.query ("SELECT e.IdExpediente, concat_ws(' ', c.nombre, c.apellido) as Cliente, em.nombre as CreadoPor, ed.estado, ed.fechaConsulta,ed.fechaExpiracion from tbl_expedientedetalle as ed inner join tbl_expediente as e on ed.IdExpediente=e.IdExpediente inner join tbl_empleado as em on e.IdEmpleado=em.IdEmpleado inner join tbl_cliente as c on e.IdCliente=c.idCliente;")
+    const [filas]= await conexion.query ("SELECT e.IdExpediente, c.IdCliente as Cliente, em.nombre as CreadoPor,e.`fechaCreacion`from tbl_expedientedetalle as ed inner join tbl_expediente as e on ed.IdExpediente=e.IdExpediente inner join tbl_empleado as em on e.IdEmpleado=em.IdEmpleado inner join tbl_cliente as c on e.IdCliente=c.idCliente;")
  return filas;
 } catch (error) {
     console.log (error);
     throw new error ("Error al consultar el API");
  }
+
 },
 
 postInsertExpediente:async (expediente)=> {
