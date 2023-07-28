@@ -40,6 +40,9 @@ import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
 import { ContrEstado } from "../controllers/estado.js";
 import { ContrSucursal } from "../controllers/sucursal.js";
 import{ContrAutoReg} from "../controllers/autoregistro.js"
+import { ContrDepto } from "../controllers/departamento.js";
+import { ContrCiudad } from "../controllers/ciudad.js";
+import { ContrPais } from "../controllers/pais.js";
 
 
 const router = express.Router();
@@ -112,7 +115,23 @@ router.delete('/Rol/RolEliminado',ContrRol.deleteRol)
 //AutoRegistro
 router.post('/usuario/AutoRegistro', ContrAutoReg.postUsuarioAutoRegistro)
 
+//Pais
+router.get('/paises', ContrPais.getPaises)
+router.post('/pais/crear', ContrPais.postPais)
+router.put('/pais/actualizar', ContrPais.putPais)
+router.delete('/pais/eliminar', ContrPais.delPais)
 
+//Departamento
+router.get('/departamentos', ContrDepto.getDepartamentos)
+router.post('/departamento/crear', ContrDepto.postDepto)
+router.put('/departamento/actualizar', ContrDepto.putDepto)
+router.delete('/departamento/eliminar', ContrDepto.delDepto)
+
+//Ciudad
+router.get('/ciudades', ContrCiudad.getCiudades)
+router.post('/ciudad/crear', ContrCiudad.postCiudad)
+router.put('/ciudad/actualizar', ContrCiudad.putCiudad)
+router.delete('/ciudad/eliminar', ContrCiudad.delCiudad)
 
 
 //empleado
