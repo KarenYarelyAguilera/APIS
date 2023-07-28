@@ -100,6 +100,19 @@ export const ModPreguntas = {
     }
   },
 
+  getPyR : async (usuario) => {
+    try {
+    const conexion = await connectDB();
+      const [filas] = await conexion.query("SELECT  p.`Pregunta`, r.`Respuesta`, r.Id_Pregunta   FROM tbl_ms_preguntas_usuario as r INNER JOIN tbl_ms_preguntas as p where `Id_Usuario`=? AND r.`Id_Pregunta`=p.`Id_Pregunta`",
+      [usuario.Id_Usuario],
+      );
+      return filas;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al obtener la lista de pre");
+    } 
+},
+
 
 
 };

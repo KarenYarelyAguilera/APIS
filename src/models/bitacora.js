@@ -18,11 +18,12 @@ export const ModBitacora = {
         }
     },
 
-   //---------RECUPERACION DE CONTRASEÑA-----------------
-    postInsertContra: async (idusuario)=>{
+//------Cierre de Secion -----
+
+    postCerrarSesion: async (idusuario)=>{
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Login"," Recuperacion de contraseña")',
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,1,"Cierre de sesión ","El usuario salio del sistema ")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 
@@ -31,6 +32,37 @@ export const ModBitacora = {
             throw new Error("Error en consumir el API");
         }
     },
+
+
+   //---------CONTRASEÑA OLVIDADA-----------------
+    postInsertContra: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Login","Contraseña olvidada")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
+
+    //Envio de correo invalido 
+
+    postCorreoInvalido: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Recuperacion"," Ingreso un correo incorrecto")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
+
 
     //-----------PREGUNTAS DE SEGURIDAD-----------
     //----Preguntas ---------
@@ -67,7 +99,7 @@ export const ModBitacora = {
     postInsertModEmpleado: async (idusuario)=>{
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,3,"Modulo de empleado","El usuario ingreso al modulo de empleado")',
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,3,"Usuario","Se ingreso al modulo de Usuarios")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 
@@ -109,6 +141,20 @@ export const ModBitacora = {
         const conexion = await connectDB();
         try {
             const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,6,"Actualizar empleado","El usuario realizo actualizaciones a los datos de empleados")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
+
+
+    postErrorInsertEmpleado: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,6,"Registro incompleto","Se dejaron campos vacios")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 

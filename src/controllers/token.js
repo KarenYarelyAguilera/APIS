@@ -1,4 +1,5 @@
-    import  {TokenMod}  from "../Models/token.js";
+import  {TokenMod}  from "../Models/token.js";
+
 
     export const TokenContr = {
     enviarCodigo: async (req, res) => {
@@ -27,3 +28,4 @@
         }
     },
     };
+

@@ -41,6 +41,7 @@ const router = express.Router();
 
 //usuario
 router.get('/usuarios',ContrUsuario.getUsuarios)
+router.post('/usuario',ContrUsuario.getUsuario)
 router.post('/usuario/insert',ContrUsuario.postUsuario)
 router.put('/usuario/update',ContrUsuario.putUsuario)
 
@@ -127,6 +128,7 @@ router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
 router.post('/correo/existe',ContrPreguntas.getUser) 
+router.post('/pregYresp',ContrPreguntas.getPyR)
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
@@ -151,17 +153,20 @@ router.delete('/proveedor/EliminarProveedor',ContrProveedor.deleteProveedor)
 //BITACORA
 //--Login y Recuperacion de Contraseña--
 router.post('/bitacora/Login',ContrBitacora.postInsertLogin)
-router.post('/bitacora/Recuperacion',ContrBitacora.postInsertContra)
+router.post('/bitacora/Cierre',ContrBitacora.postCerrarSesion)
+router.post('/Recuperacionbitacora/',ContrBitacora.postInsertContra)
 router.post('/bitacora/PreguntaSeguridad',ContrBitacora.postPrgunta)
+router.post('/bitacora/CorreoInvalido',ContrBitacora.postCorreoInvalido)
 router.post('/bitacora/RespuestaSeguridad',ContrBitacora.postPrgunta)
 //--Empleado--
 router.post('/bitacora/Empleado',ContrBitacora.postInsertModEmpleado)
 router.post('/bitacora/RegistroEmpleado',ContrBitacora.postInsertRegistroEmpleado)
 router.post('/bitacora/ListaEmpleado',ContrBitacora.postVerListaEmpleados)
 router.post('/bitacora/ActualizarEmpleado',ContrBitacora.postActualizarEmpleado)
+router.post('/bitacora/ErrorInsertEmpleado',ContrBitacora.postErrorInsertEmpleado)
 router.post('/bitacora/EliminarEmpleado',ContrBitacora.postEliminarEmpleado)
 //--Usuario--
-router.post('/bitacora/Usuario',ContrBitacora.postInsertUsuario)
+router.post('/bitacora/InsertUsuario',ContrBitacora.postInsertUsuario)
 router.post('/bitacora/ListaUsuario',ContrBitacora.postListaUsuario)
 router.post('/bitacora/ActualizacionUsuario',ContrBitacora.postActualizarUsuario)
 router.post('/bitacora/EliminarUsuario',ContrBitacora.postEliminarUsuario)
