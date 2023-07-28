@@ -49,6 +49,7 @@ const router = express.Router();
 
 //usuario
 router.get('/usuarios',ContrUsuario.getUsuarios)
+router.post('/usuario',ContrUsuario.getUsuario)
 router.post('/usuario/insert',ContrUsuario.postUsuario)
 router.put('/usuario/update',ContrUsuario.putUsuario)
 
@@ -151,7 +152,10 @@ router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
-router.post('/correo/existe',ContrPreguntas.getUser)  
+
+router.post('/correo/existe',ContrPreguntas.getUser) 
+router.post('/pregYresp',ContrPreguntas.getPyR)
+
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
@@ -200,7 +204,9 @@ router.post('/bitacora/ErrorInsertEmpleado',ContrBitacora.postErrorInsertEmplead
 router.post('/bitacora/EliminarEmpleado',ContrBitacora.postEliminarEmpleado)
 //--Usuario--
 router.post('/bitacora/InsertUsuario',ContrBitacora.postInsertUsuario)
+
 router.post('/bitacora/SalirRegistroUsuario',ContrBitacora.postBotonSalirRu)
+
 router.post('/bitacora/ListaUsuario',ContrBitacora.postListaUsuario)
 router.post('/bitacora/SalirListaUsuarios',ContrBitacora.postBotonSalirLU)
 router.post('/bitacora/ActualizacionUsuario',ContrBitacora.postActualizarUsuario)
