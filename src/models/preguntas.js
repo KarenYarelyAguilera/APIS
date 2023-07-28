@@ -42,11 +42,11 @@ export const ModPreguntas = {
     postInsertRespuestas: async (respuestas) => {
         try {
         const conexion = await connectDB();
-          const [filas] = await conexion.query("INSERT INTO tbl_ms_preguntas_usuario (Id_Usuario,Respuesta,creado_por,fecha_creacion) values(?,?,?,?);",
+          const [filas] = await conexion.query("INSERT INTO tbl_ms_preguntas_usuario (Id_Usuario,Respuesta,Id_Pregunta,creado_por,fecha_creacion) values(?,?,?,?,?);",
             [
                 respuestas.idUser,
-                respuestas.idPregunta,
                 respuestas.respuesta,
+                respuestas.idPregunta,
                 respuestas.creadoPor,
                 respuestas.fechaCrea,
             ]
