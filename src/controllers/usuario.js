@@ -5,6 +5,17 @@ export const ContrUsuario = {
     const users = await ModUsuarios.getUsuarios();
     res.json(users);
   },
+  getUsuario:async(req, res)=>{
+    try {
+        const {Correo_Electronico} = req.body;
+      
+        const result = await ModUsuarios.getUsuario({Correo_Electronico});
+        res.json(result);
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al consumir el api")
+    }
+},
   postUsuario: async (req, res) => {
     try {
       const { id, usuario, nombre, clave, correo, rol } = req.body;

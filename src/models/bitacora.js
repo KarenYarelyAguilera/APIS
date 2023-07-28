@@ -47,6 +47,7 @@ getBitacora : async ()=>  {
         }
     },
 
+
 //CONFIGURACION 
  //------Ingreso a las pantallas de Configuración----------
  postPantallaConfig: async (idusuario)=>{
@@ -89,6 +90,7 @@ postSalirLB: async (idusuario)=>{
         throw new Error("Error en consumir el API");
     }
 },
+
 
 
    //---------CONTRASEÑA OLVIDADA-----------------
@@ -156,7 +158,9 @@ postSalirLB: async (idusuario)=>{
     postInsertModEmpleado: async (idusuario)=>{
         const conexion = await connectDB();
         try {
+
             const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Usuario","Se ingreso al a la pantalla de Usuarios")',
+
             [idusuario.Id]
             );
             return {estado:"OK"}; 
@@ -239,6 +243,20 @@ postBotonSalirRE: async (idusuario)=>{
         const conexion = await connectDB();
         try {
             const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,9,"Registro incompleto","Se dejaron campos vacios")',
+            [idusuario.Id]
+            );
+            return {estado:"OK"}; 
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error en consumir el API");
+        }
+    },
+
+
+    postErrorInsertEmpleado: async (idusuario)=>{
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,6,"Registro incompleto","Se dejaron campos vacios")',
             [idusuario.Id]
             );
             return {estado:"OK"}; 
