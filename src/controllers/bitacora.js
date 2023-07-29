@@ -2,7 +2,18 @@ import { ModBitacora } from "../models/bitacora.js";
 
 export const ContrBitacora = {
 
-    //-----------LOGIN---------------
+
+//----------Llamado a toda la bitacora---------------------
+
+getBitacora: async (req,res)=> {
+
+    const bitacora = await ModBitacora.getBitacora()
+    res.json(bitacora)
+   
+},
+
+//-----------LOGIN---------------
+
 
     postInsertLogin : async (req,res)=> {
         try {
@@ -13,6 +24,61 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+
+//------Cierre de Secion -----
+
+
+    postCerrarSesion : async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postCerrarSesion ({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+//CONFIGURACION 
+ //------Ingreso a las pantallas de Configuración----------
+ postPantallaConfig: async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postPantallaConfig({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+//------Ingreso a la pantalla de Lista de Bitacora----------
+postListaBitacora: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postListaBitacora({Id});
+=======
+postCerrarSesion : async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postCerrarSesion ({Id});
+
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+
+//------Salir de la pantalla de Lista de Bitacora----------
+postSalirLB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirLB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
 
      //---------RECUPERACION DE CONTRASEÑA-----------------
 
@@ -25,6 +91,18 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+//Envio de correo invalido 
+
+    postCorreoInvalido : async (req,res)=> {
+        try {
+            const{Id}=req.body;
+            const result = await ModBitacora.postCorreoInvalido({Id});
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
     //-----------PREGUNTAS DE SEGURIDAD-----------
     //----Preguntas ---------
 
@@ -50,10 +128,6 @@ export const ContrBitacora = {
     },
 
 
-
-
-
-
  //---------------------MODULO EMPLEADO------------------
  //------Ingreso al modulo de empleados----------
  postInsertModEmpleado : async (req,res)=> {
@@ -77,6 +151,18 @@ export const ContrBitacora = {
         }
     },
 
+//----------Salir de la pantalla de Registro de Empleado------------------
+postBotonSalirRE: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postBotonSalirRE({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+
+},
+
 //--------- Ver lista de empleados-------------
     postVerListaEmpleados : async (req,res)=> {
         try {
@@ -87,7 +173,17 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+//----------Salir de la pantalla de Lista de Empleados ------------------
+postBotonSalirLE: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postBotonSalirLE({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
 
+},
     //-----------Actualizacion de datos en empleados--------
     postActualizarEmpleado: async (req,res)=> {
         try {
@@ -98,6 +194,17 @@ export const ContrBitacora = {
             console.log(error);
         }
     },
+
+        //-----------Actualizacion error --------
+        postErrorInsertEmpleado: async (req,res)=> {
+            try {
+                const{Id}=req.body;
+                const result = await ModBitacora.postErrorInsertEmpleado({Id});
+                res.status(201).json({ id: result.id });
+            } catch (error) {
+                console.log(error);
+            }
+        },
 
 //-----------Eliminar empleado--------
 
@@ -124,6 +231,18 @@ postInsertUsuario:async(req,res)=> {
     }
 },
 
+//----------Salir de la pantalla de Registro de Usuario------------------
+postBotonSalirRu: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postBotonSalirRu({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+
+},
+
 //-------------Lista de Usuario------------
 postListaUsuario:async(req,res)=>{
     try {
@@ -133,6 +252,17 @@ postListaUsuario:async(req,res)=>{
     } catch (error) {
         console.log(error)
     }
+},
+//----------Salir de la pantalla de lista de Usuario------------------
+postBotonSalirLU: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postBotonSalirLU({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+
 },
 //---------Actualizar Usuario-----------------
 postActualizarUsuario:async(req,res)=>{

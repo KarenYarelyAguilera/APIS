@@ -26,10 +26,11 @@ export const ContrPreguntas = {
     },
     postRespuestas: async (req, res) => {
         try {
-            const { idUser, Id_Pregunta, respuesta, creadoPor, fechaCrea} = req.body;
+            const { idUser, idPregunta, respuesta, creadoPor, fechaCrea} = req.body;
+            console.log(req.body);
             const result = await ModPreguntas.postInsertRespuestas({
                 idUser:idUser,
-                idPregunta:Id_Pregunta,
+                idPregunta:idPregunta,
                 respuesta:respuesta,
                 creadoPor:creadoPor,
                 fechaCrea:fechaCrea
@@ -62,6 +63,18 @@ export const ContrPreguntas = {
           res.status(500).json({ message: "Usuario no existe" });
         }
       },
+      getPyR: async (req, res) => {
+        try {
+            const { Id_Usuario} = req.body;
+            const result = await ModPreguntas.getPyR({
+                Id_Usuario
+            });
+            res.status(201).json(result);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: "Error al obtener la lista" });
+        }
+    },
     
 
 
