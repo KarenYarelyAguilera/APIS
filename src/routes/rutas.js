@@ -36,6 +36,8 @@ import { ContrBitacora } from "../controllers/bitacora.js";
 import { TokenContr } from "../controllers/token.js";
 import { ContrAutoReg } from "../controllers/autoregistro.js";
 
+import {ContrRecordatorio} from"../controllers/recordatorio.js"
+
 const router = express.Router();
 
 //usuario
@@ -282,6 +284,12 @@ router.get('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.GetVentaDetalle
 router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetalleDescuento)
 router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
 router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
+
+
+//Recordatorio
+router.get('/recordatorios',ContrRecordatorio.getCitas)
+router.get('/recordatorio',ContrRecordatorio.getCita)
+router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
 
 
 export default router
