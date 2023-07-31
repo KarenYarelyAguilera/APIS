@@ -92,8 +92,6 @@ router.delete('/clientes/eliminar',ContrClientes.delCliente)
 //Compra
 router.get('/compra',ContrCompra.getCompras)
 router.post('/compra/NuevaCompra',ContrCompra.postInsertCompra)
-router.put('/compra/ActualizarCompra',ContrCompra.putUpdateCompra)
-router.delete('/compra/EliminarCompra',ContrCompra.deleteCompra)
 
 //Ventas
 router.get('/Ventas',ContrVentas.getVentas)

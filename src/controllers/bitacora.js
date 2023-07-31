@@ -2,7 +2,6 @@ import { ModBitacora } from "../models/bitacora.js";
 
 export const ContrBitacora = {
 
-
 //----------Llamado a toda la bitacora---------------------
 
 getBitacora: async (req,res)=> {
@@ -13,7 +12,6 @@ getBitacora: async (req,res)=> {
 },
 
 //-----------LOGIN---------------
-
 
     postInsertLogin : async (req,res)=> {
         try {
@@ -26,7 +24,6 @@ getBitacora: async (req,res)=> {
     },
 
 //------Cierre de Secion -----
-
 
     postCerrarSesion : async (req,res)=> {
         try {
@@ -55,18 +52,11 @@ postListaBitacora: async (req,res)=> {
     try {
         const{Id}=req.body;
         const result = await ModBitacora.postListaBitacora({Id});
-=======
-postCerrarSesion : async (req,res)=> {
-    try {
-        const{Id}=req.body;
-        const result = await ModBitacora.postCerrarSesion ({Id});
-
         res.status(201).json({ id: result.id });
     } catch (error) {
         console.log(error);
     }
 },
-
 
 //------Salir de la pantalla de Lista de Bitacora----------
 postSalirLB: async (req,res)=> {
@@ -78,7 +68,6 @@ postSalirLB: async (req,res)=> {
         console.log(error);
     }
 },
-
 
      //---------RECUPERACION DE CONTRASEÑA-----------------
 
