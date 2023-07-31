@@ -4,7 +4,7 @@ export const ModEmpleados = {
     getEmpleados: async () => {
         try {
         const conexion = await connectDB();
-          const [filas] = await conexion.query("select e.IdEmpleado, e.nombre, e.apellido, e.telefonoEmpleado, s.departamento, g.descripcion, e.numeroIdentidad from tbl_empleado as e inner join tbl_sucursal as s on e.IdSucursal=s.IdSucursal inner join tbl_genero as g on g.IdGenero=e.IdGenero ORDER BY IdEmpleado ASC;");
+          const [filas] = await conexion.query("select e.IdEmpleado, e.nombre, e.apellido, e.telefonoEmpleado, s.IdDepartamento, g.descripcion, e.numeroIdentidad from tbl_empleado as e inner join tbl_sucursal as s on e.IdSucursal=s.IdSucursal inner join tbl_genero as g on g.IdGenero=e.IdGenero ORDER BY IdEmpleado ASC;");
           return filas;
         } catch (error) {
           console.log(error);
@@ -96,6 +96,24 @@ export const ModEmpleados = {
           console.log(error);
           throw new Error("Error al obtener lista de géneros");
         } 
+    },
+
+    empleadoExist: async (empleado) => {
+      try {
+        const conexion = await connectDB();
+        const [filas] = await conexion.query(
+          "select e.IdEmpleado, e.nombre, e.apellido, e.telefonoEmpleado, e.numeroIdentidad from tbl_empleado as e where numeroIdentidad = ?;",
+          [empleado.numId]
+        );
+  
+        if (filas.length === 1) {
+          return filas;
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
    
 
