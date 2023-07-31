@@ -131,6 +131,11 @@ router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
 router.post('/correo/existe',ContrPreguntas.getUser) 
 router.post('/pregYresp',ContrPreguntas.getPyR)
+router.delete('/eliminarRespuesta',ContrPreguntas.delRespuestas)
+router.put('/pyr/editar',ContrPreguntas.putRespuestas)
+router.get('/respuesta',ContrPreguntas.getRespuesta)
+router.get('/pregunta',ContrPreguntas.getPregunta)
+
 
 //ventaDetallePromocion
 router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
