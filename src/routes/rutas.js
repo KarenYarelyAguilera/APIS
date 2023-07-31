@@ -42,6 +42,8 @@ import { ContrSucursal } from "../controllers/sucursal.js";
 import{ContrAutoReg} from "../controllers/autoregistro.js"
 
 
+import {ContrRecordatorio} from"../controllers/recordatorio.js"
+
 const router = express.Router();
 
 //usuario
@@ -136,6 +138,11 @@ router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
 
 router.post('/correo/existe',ContrPreguntas.getUser) 
 router.post('/pregYresp',ContrPreguntas.getPyR)
+router.delete('/eliminarRespuesta',ContrPreguntas.delRespuestas)
+router.put('/pyr/editar',ContrPreguntas.putRespuestas)
+router.get('/respuesta',ContrPreguntas.getRespuesta)
+router.get('/pregunta',ContrPreguntas.getPregunta)
+
 
 
 //ventaDetallePromocion
@@ -328,5 +335,11 @@ router.delete('/ExpedienteDetalle/DeleteExpedinteDetalle',ContrExpedineteDetalle
 router.put('/Estado/Activo',ContrEstado.updActivo)
 router.put('/Estado/Inactivo',ContrEstado.updInactivo)
  
+
+//Recordatorio
+router.get('/recordatorios',ContrRecordatorio.getCitas)
+router.get('/recordatorio',ContrRecordatorio.getCita)
+router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
+
 
 export default router
