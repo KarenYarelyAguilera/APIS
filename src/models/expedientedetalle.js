@@ -2,10 +2,10 @@ import { connectDB } from "../config/Conn.js";
 
 export const ModExpedienteDetalle = { 
 
-    getExpedienteDetalle:async ()=> {
+    posttExpedienteDetalle:async (expediente)=> {
         try {
             const conexion = await connectDB();
-            const [filas]=await conexion.query ("SELECT * FROM tbl_expedientedetalle")
+            const [filas]=await conexion.query ("SELECT * FROM tbl_expedientedetalle WHERE `IdExpediente` =?",[expediente.id])
         return filas;
         } catch (error) {
             console.log (error);
