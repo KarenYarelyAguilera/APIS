@@ -159,7 +159,9 @@ postSalirLB: async (idusuario)=>{
         const conexion = await connectDB();
         try {
 
+
             const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Usuario","Se ingreso al a la pantalla de Usuarios")',
+
 
             [idusuario.Id]
             );
