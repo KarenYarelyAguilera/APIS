@@ -15,10 +15,9 @@ export const ModInventario = {
   postInsertInventario: async (inventario) => {
     try {
       const conexion = await connectDB();
-      const [filas] = await conexion.query("INSERT INTO tbl_inventario (IdProducto, cantidad) VALUES (?,?);",
+      const [filas] = await conexion.query("INSERT INTO tbl_inventario (IdProducto, cantidad) VALUES (?,0);",
         [
         inventario.IdProducto,
-        inventario.cantidad,
         ]
       );
       return { id: filas.insertId };
@@ -27,13 +26,14 @@ export const ModInventario = {
       throw new Error("Error al registrar inventario");
     }
   },
-  putUpdateInventario: async (inventario) => {
+  putUpdateInventarioCompras: async (inventario) => {
     try {
       const conexion = await connectDB()
-      const [filas] = await conexion.query("UPDATE tbl_inventario set cantidad=? where IdInventario = ?;",
+      const [filas] = await conexion.query("UPDATE tbl_inventario set cantidad =(SELECT cantidad from tbl_inventario where `IdProducto`=?)+? WHERE `IdProducto`=?;",
         [
+          inventario.idProducto,
           inventario.cantidad,
-          inventario.idInventario
+          inventario.idProducto
         ]
       )
       return { estado: "okss" }

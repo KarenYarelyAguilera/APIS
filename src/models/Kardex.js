@@ -14,14 +14,13 @@ export const ModKardex = {
    
     },
   
-    post_Kardex: async (kardex) => {
+    postKardexCompra: async (kardex) => {
       try {
       const conexion = await connectDB();
-            const [filas] = await conexion.query("INSERT INTO  tbl_kardex (IdTipoMovimiento,IdProducto,Id_Usuario,fechaYHora,cantidad) VALUES(?,?,?,?,?);",
+            const [filas] = await conexion.query("INSERT INTO  tbl_kardex (IdTipoMovimiento,IdProducto,Id_Usuario,fechaYHora,cantidad) VALUES(1,?,?,?,?);",
           [
-            kardex.IdTipoMovimiento,
-            kardex.IdProducto,
-            kardex.Id_Usuario,
+            kardex.idProducto,
+            kardex.idUsuario,
             kardex.fechaYHora,
             kardex.cantidad,
           ]
