@@ -38,11 +38,7 @@ import { ContrExpediente } from "../controllers/expediente.js";
 import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
 
 import { ContrEstado } from "../controllers/estado.js";
-import { ContrSucursal } from "../controllers/sucursal.js";
-import{ContrAutoReg} from "../controllers/autoregistro.js"
-import { ContrDepto } from "../controllers/departamento.js";
-import { ContrCiudad } from "../controllers/ciudad.js";
-import { ContrPais } from "../controllers/pais.js";
+
 import {ContrRecordatorio} from"../controllers/recordatorio.js"
 
 const router = express.Router();
@@ -150,12 +146,14 @@ router.post('/preguntas/agregar',ContrPreguntas.postPreguntas)
 router.get('/preguntas/respuestas',ContrPreguntas.getRespuestas)
 router.post('/preguntas/respuestas/agregar',ContrPreguntas.postRespuestas)
 router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
+
 router.post('/correo/existe',ContrPreguntas.getUser) 
 router.post('/pregYresp',ContrPreguntas.getPyR)
 router.delete('/eliminarRespuesta',ContrPreguntas.delRespuestas)
 router.put('/pyr/editar',ContrPreguntas.putRespuestas)
 router.get('/respuesta',ContrPreguntas.getRespuesta)
 router.get('/pregunta',ContrPreguntas.getPregunta)
+
 
 
 //ventaDetallePromocion
@@ -346,6 +344,7 @@ router.delete('/ExpedienteDetalle/DeleteExpedinteDetalle',ContrExpedineteDetalle
 //Estados
 router.put('/Estado/Activo',ContrEstado.updActivo)
 router.put('/Estado/Inactivo',ContrEstado.updInactivo)
+ 
 
 //Recordatorio
 router.get('/recordatorios',ContrRecordatorio.getCitas)

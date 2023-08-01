@@ -1,59 +1,57 @@
 import { connectDB } from "../config/Conn.js";
-import { ModKardex } from "./Kardex.js";
-import { ModInventario } from "./inventario.js";
 
-export const ModCompras = {
-  getCompras: async () => {
+export const ModCiudad = {
+  
+  getCiudades: async () => {
     try {
-      const conexion = await connectDB();
-      const [filas] = await conexion.query(
-        "SELECT * FROM tbl_compra as cmp INNER JOIN  tbl_proveedor as pvd ON cmp.IdProveedor=pvd.IdProveedor"
-      );
+    const conexion = await connectDB();
+      const [filas] = await conexion.query("select * from tbl_ciudad");
       return filas;
     } catch (error) {
       console.log(error);
-      throw new Error("Error al obtener compras");
-    }
+      throw new Error("Error al obtener los cities");
+    } 
   },
 
-  postCompras: async () => {
+  postInsertCiudad: async (ciudad) => {
     try {
-      const conexion = await connectDB();
-      const [filas] = await conexion.query(
-        "INSERT INTO tbl_compra (totalCompra) VALUES (null)"
+    const conexion = await connectDB();
+      const [filas] = await conexion.query("insert into tbl_ciudad (ciudad) values (?);",
+        [
+          ciudad.ciudad,
+        ]
       );
-      return filas.insertId;
+      return { id: filas.insertId };
     } catch (error) {
-      throw new Error("Error al insertar compra");
+      console.log(error);
+      throw new Error("Error al crear ciudad");
     }
   },
-
-  postCompraDetalle: async (detalles,compraId) => {
+  putUpdateciudad: async (ciudad)=>{
+      try {
+        const conexion = await connectDB()
+        const [filas] = await conexion.query("UPDATE tbl_ciudad set ciudad = ? WHERE IdCiudad= ?;",
+        [
+          ciudad.ciudad,
+          ciudad.IdCiudad,
+        ]
+        )
+        return {estado:"ok"}
+      } catch (error) {
+        console.log(error);
+        throw new Error("Error al actualizar la ciudad")
+      }
+  },
+  delCiudad: async (ciudad) => {
     try {
       const conexion = await connectDB();
-  
-      const promises = detalles.map(async (detalle) => {
-        await ModInventario.putUpdateInventarioCompras(detalle)
-        await ModKardex.postKardexCompra(detalle)
-        await conexion.query(
-          "INSERT INTO tbl_compraDetalle (IdCompra, idProveedor, cantidad, idProducto, costoCompra) VALUES (?,?, ?, ?, ?)",
-          [compraId, detalle.idProveedor, detalle.cantidad, detalle.idProducto, detalle.costo]
-        );
-      });
-      await Promise.all(promises);
-  
-      const [sumResult] = await conexion.query(
-        "SELECT SUM(costoCompra) AS totalCosto FROM tbl_compraDetalle WHERE IdCompra = ?",
-        [compraId]
-      );
-  
-      const totalCosto = sumResult[0].totalCosto || 0; //
-      await conexion.query(
-        "UPDATE tbl_compra SET totalCompra = ? WHERE IdCompra = ?",
-        [totalCosto, compraId]
-      );
+      await conexion.query("DELETE FROM tbl_ciudad WHERE IdCiudad = ?;", [
+        ciudad.IdCiudad,
+      ]);
+      return { state: "ok" };
     } catch (error) {
-      throw new Error("Error al insertar el detalle de compra");
+      console.log(error);
+      throw new Error("Error al eliminar la ciudad");
     }
   },
 };
