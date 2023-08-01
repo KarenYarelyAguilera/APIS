@@ -38,6 +38,11 @@ import { ContrExpediente } from "../controllers/expediente.js";
 import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
 
 import { ContrEstado } from "../controllers/estado.js";
+import { ContrSucursal } from "../controllers/sucursal.js";
+import{ContrAutoReg} from "../controllers/autoregistro.js"
+import { ContrDepto } from "../controllers/departamento.js";
+import { ContrCiudad } from "../controllers/ciudad.js";
+import { ContrPais } from "../controllers/pais.js";
 
 import {ContrRecordatorio} from"../controllers/recordatorio.js"
 
