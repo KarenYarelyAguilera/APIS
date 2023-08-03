@@ -263,7 +263,7 @@ router.delete('/pagos/eliminar', ContrPago.delPago)
 //Parametros
 router.get('/parametros', ContrParametro.getParametros)
 router.get('/parametros', ContrParametro.getIntentos)
-router.post('/parametros/AdminPreguntas', ContrParametro.getPreguntas)
+router.get('/parametros/AdminPreguntas', ContrParametro.getPreguntas)
 router.get('/parametros', ContrParametro.getImpuesto)
 router.get('/parametros', ContrParametro.getTiempoDReuintentoLogin)
 router.put('/parametros/actualizar', ContrParametro.putParametro)
