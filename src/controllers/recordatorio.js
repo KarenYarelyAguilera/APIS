@@ -35,4 +35,28 @@ export const ContrRecordatorio = {
             res.status(500).json({ message: "Error al agendar la cita" });
         }
     },
+    deleteCita: async (req,res)=>{
+        try {
+          const {IdRecordatorio} = req.body
+          const result = await ModRecordatorio.delCita({IdRecordatorio})
+          res.status(200).json(result)
+        } catch (error) {
+          console.log(error);
+          throw new Error("Error al consumir el api");
+        }
+      },
+      putCitas: async (req, res) => {
+        try {
+          const {Nota,fecha,IdRecordatorio  } = req.body;
+          const result = await ModRecordatorio.putUpdateCitas({
+            Nota,
+            fecha,
+            IdRecordatorio,
+          });
+          res.status(200).json({response:"Ok"})
+        } catch (error) {
+          console.log(error);
+          throw new Error("Error al consumir el api")
+        }
+      },
 }
