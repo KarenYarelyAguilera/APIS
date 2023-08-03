@@ -25,7 +25,7 @@ try {
         expediente.IdEmpleado,
     ]
         );
-    return {estado:"OK"};
+    return {id:filas.insertId};
 } catch (error) {
     console.log(error);
     throw new error ("Error al consultar el API");
