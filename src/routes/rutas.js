@@ -43,6 +43,8 @@ import{ContrAutoReg} from "../controllers/autoregistro.js"
 import { ContrDepto } from "../controllers/departamento.js";
 import { ContrCiudad } from "../controllers/ciudad.js";
 import { ContrPais } from "../controllers/pais.js";
+import { ContrGenero } from "../controllers/genero.js";
+import { ContrPermisos } from "../controllers/permisos.js";
 
 import {ContrRecordatorio} from"../controllers/recordatorio.js"
 
@@ -349,7 +351,12 @@ router.delete('/ExpedienteDetalle/DeleteExpedinteDetalle',ContrExpedineteDetalle
 //Estados
 router.put('/Estado/Activo',ContrEstado.updActivo)
 router.put('/Estado/Inactivo',ContrEstado.updInactivo)
- 
+
+//Genero
+router.get('/Genero',ContrGenero.getGenero)
+
+//Permisos
+router.get("/permisos", ContrPermisos.getPermisos)
 
 //Recordatorio
 router.get('/recordatorios',ContrRecordatorio.getCitas)
