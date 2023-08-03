@@ -112,6 +112,63 @@ export const ModPreguntas = {
       throw new Error("Error al obtener la lista de pre");
     } 
 },
+DeleteRespuestas: async(usuario)=>{
+  try {
+      const conexion = await connectDB()
+      const [filas] = await conexion.query("DELETE FROM `tbl_ms_preguntas_usuario` WHERE `Id_Pregunta`=? AND `Id_Usuario`=`Id_Usuario`;",
+    [
+      usuario.Id_Pregunta,
+    ]
+    );
+      
+  } catch (error) {
+      console.log(error);
+      throw new Error("Error al eliminar la respuesta")
+  }
+},
+
+putRespuestas: async (usuario) => {
+  try {
+    const conexion = await connectDB()
+    const [filas] = await conexion.query("UPDATE tbl_ms_preguntas_usuario set  Respuesta=?, Id_Usuario=?, modificado_por=?  where Id_Pregunta =?;",
+      [
+        usuario.Respuesta,
+        usuario.idUser,
+        usuario.modificado_por,
+        usuario.Id_Pregunta,
+
+      ])
+    return { estado: "ok" }
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error al actualizar la respuesta")
+  }
+},
+getRespuesta: async (usuario) => {
+  try {
+  const conexion = await connectDB();
+    const [filas] = await conexion.query("select `Respuesta` from tbl_ms_preguntas_usuario WHERE `Id_Pregunta`=?",
+    [usuario.Id_Pregunta],);
+    return filas;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error al obtener la respuesta");
+  } 
+},
+getPregunta: async (usuario) => {
+  try {
+  const conexion = await connectDB();
+    const [filas] = await conexion.query("select `Pregunta` from tbl_ms_preguntas WHERE `Id_Pregunta`=?",
+    [usuario.Id_Pregunta],);
+    return filas;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Error al obtener la respuesta");
+  } 
+},
+
+
+
 
 
 
