@@ -9,8 +9,8 @@ export const ContrSucursal= {
 
     postInsertSucursal:async(req,res)=>{
         try {
-            const{departamento, ciudad, direccion, telefono}= req.body;
-            const result = await ModSucursal.postInsertSucursal({departamento, ciudad, direccion, telefono});
+            const{IdDepartamento, IdCiudad, direccion, telefono}= req.body;
+            const result = await ModSucursal.postInsertSucursal({IdDepartamento, IdCiudad, direccion, telefono});
             res.status(201).json({ id: result.id });
         } catch (error) {
             console.log(error);
@@ -19,8 +19,8 @@ export const ContrSucursal= {
 
     putUpdateSucursal:async(req,res)=>{
         try {
-            const{departamento, ciudad, direccion, telefono, IdSucursal}= req.body;
-            const result = await ModSucursal.putUpdateSucursal({departamento, ciudad, direccion, telefono, IdSucursal});
+            const{IdDepartamento, IdCiudad, direccion, telefono, IdSucursal}= req.body;
+            const result = await ModSucursal.putUpdateSucursal({IdDepartamento, IdCiudad, direccion, telefono, IdSucursal});
             res.status(201).json({ id: result.id });
         } catch (error) {
             console.log(error);

@@ -5,7 +5,7 @@ export const ModSucursal = {
     getSucursales: async () => {
         try {
             const conexion = await connectDB();
-            const [filas] = await conexion.query("select s.IdSucursal, s.departamento, s.ciudad, s.direccion, s.telefono from tbl_sucursal as s;")
+            const [filas] = await conexion.query("select s.IdSucursal, d.departamento, c.ciudad, s.direccion, s.telefono from tbl_sucursal as s inner join tbl_departamento as d on s.IdDepartamento=d.IdDepartamento inner join tbl_ciudad as c on s.IdCiudad=c.IdCiudad;")
             return filas;
         } catch (error) {
             console.long(error);
@@ -16,10 +16,10 @@ export const ModSucursal = {
     postInsertSucursal: async (sucursal) => {
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query("INSERT INTO tbl_sucursal (departamento, ciudad, direccion, telefono) VALUES (?, ?, ?, ?);",
+            const [filas] = await conexion.query("INSERT INTO tbl_sucursal (IdDepartamento, IdCiudad, direccion, telefono) VALUES (?, ?, ?, ?);",
                 [
-                    sucursal.departamento,
-                    sucursal.ciudad,
+                    sucursal.IdDepartamento,
+                    sucursal.IdCiudad,
                     sucursal.direccion,
                     sucursal.telefono,
                 ]
@@ -34,10 +34,10 @@ export const ModSucursal = {
     putUpdateSucursal: async (sucursal) => {
         const conexion = await connectDB();
         try {
-            const [filas] = await conexion.query("UPDATE tbl_sucursal SET departamento = ?, ciudad = ?, direccion = ?, telefono = ? WHERE (IdSucursal = ?);",
+            const [filas] = await conexion.query("UPDATE tbl_sucursal SET IdDepartamento = ?, IdCiudad = ?, direccion = ?, telefono = ? WHERE (IdSucursal = ?);",
                 [
-                    sucursal.departamento,
-                    sucursal.ciudad,
+                    sucursal.IdDepartamento,
+                    sucursal.IdCiudad,
                     sucursal.direccion,
                     sucursal.telefono,
                     sucursal.IdSucursal,

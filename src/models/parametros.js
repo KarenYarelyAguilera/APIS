@@ -47,7 +47,7 @@ export const ModParametro = {
   getPreguntas: async () => {
     try {
       const conexion = await connectDB();
-      const [filas] = await conexion.query("SELECT parametro,valor FROM tbl_ms_parametros where `Id_Parametro`=2");
+      const [filas] = await conexion.query("SELECT valor FROM tbl_ms_parametros where `Id_Parametro`=2");
       return filas;
     } catch (error) {
       console.log(error);
