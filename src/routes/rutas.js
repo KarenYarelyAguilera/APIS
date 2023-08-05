@@ -364,6 +364,7 @@ router.get('/recordatorio',ContrRecordatorio.getCita)
 router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
 router.delete('/eliminarCita',ContrRecordatorio.deleteCita)
 router.put('/actualizarCita',ContrRecordatorio.putCitas)
+router.post('/recordatorios/fecha',ContrRecordatorio.getFecha)
 
 
 export default router
