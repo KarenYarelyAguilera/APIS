@@ -45,13 +45,15 @@ export const ModDepartamento = {
   delDepto: async (departamento) => {
     try {
       const conexion = await connectDB();
-      await conexion.query("DELETE FROM tbl_departamento WHERE IdDepartamento = ?;", [
-        departamento.IdMarca,
-      ]);
-      return { state: "ok" };
+      await conexion.query("DELETE FROM tbl_departamento WHERE IdDepartamento = ?;", 
+      [
+        departamento.IdDepartamento,
+      ]
+      );
+      return { estado:"OK" };
     } catch (error) {
       console.log(error);
-      throw new Error("Error al eliminar la depto");
+      throw new Error("Error al eliminar el departamento");
     }
   },
 };

@@ -384,7 +384,7 @@ postModuloVenta: async (idusuario)=>{
     }
 },
 
-//-----------------Registro de Venta-------------------
+//-----------------Registro de nueva Venta-------------------
 postInsertVenta: async (idusuario)=>{
     const conexion = await connectDB();
     try {
@@ -409,6 +409,20 @@ postListaVenta: async (idusuario)=>{
     } catch (error) {
         console.log(error);
         throw new Error("Error al crear el API");
+    }
+},
+
+//----------Salir de la pantalla de lista de ventas------------------
+postSalirListaVenta: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Salir","Se salio de la pantalla Lista de Ventas")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
     }
 },
 
@@ -482,6 +496,19 @@ postVerListaGarantia: async (idusuario)=>{
     }
 },
 
+postSalirListaGarantia :async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Salir","Se salio de la pantalla Lista de Garantia)',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
 //------------------------Actualizar datos de Garantia-----------------
 postActualizarGarantia: async (idusuario)=>{
     const conexion = await connectDB();
@@ -509,5 +536,387 @@ postEliminarGarantia: async (idusuario)=>{
         throw new Error("Error al crear el API");
     }
 },
+//---------------------DESCUENTO------------------------
+//--------------------Ingreso a la pantalla de descuento------------------
+postPantallaDescuento: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,12,"Pantalla de Descuento","El usuario ingreso a Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//---------------Agregar un nuevo descuento--------------------
+postInsertDescuento: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Descuento","El usuario registro una nueva Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//--------------------Lista de Descuento-----------------
+postVerListaDescuento: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,14,"Lista de Descuento","El usuario ingreso a la pantalla de Ver Lista Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-----------------------Salir de la lista de descuento---------------------------
+postSalirListaDescuento:async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Salir","Se salio de la pantalla Lista de Descuento)',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
+//------------------------Actualizar datos de Descuento-----------------
+postActualizarDescuento: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,15,"Actualizacion Descuento","El usuario realizo una actualizacion en Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------Eliminar datos de Descuento-----------------
+postEliminarDescuento: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,16,"Eliminar Descuento","El usuario elimino datos en Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//------------------Pantalla de Promociones--------------------------
+//------------Ingreso a la pantalla de Promociones---------------
+postPantallaPromocion: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,12,"Pantalla de Promociones","El usuario ingreso a Promociones")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//---------------Nueva Promocion--------------------
+postInsertBPromocion: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Promocion","El usuario registro una nueva Promocion")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//--------------------Lista de Promocion-----------------
+postVerListaPromocion: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,14,"Lista de Promocion","El usuario ingreso a la pantalla de Ver Lista Promocion")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-----------------------Salir de la lista de Promocion---------------------------
+postSalirListaPromocion:async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Salir","Se salio de la pantalla Lista de Promocion)',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
+//------------------------Actualizar datos de Promocion----------------
+postActualizarPromocion: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,15,"Actualizacion Promocion","El usuario realizo una actualizacion en Promocion")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------Eliminar datos de Promocion-----------------
+postEliminarPromocion: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,16,"Eliminar Promocion","El usuario elimino datos en Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------------------Registro de Promocion del Producto---------------------------
+//-------------------INGRESO A LA PANTALLA DE PROMOCION DEL PRODUCTO-----------------
+postPantallaPromocionProducto: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,12,"Pantalla de Promocion del Producto","El usuario ingreso a Promocion del Producto")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//---------------Nueva Promocion del Producto--------------------
+postInsertBPromocionProducto: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Promocion del Producto","El usuario registro una nueva Promocion del Producto")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//--------------------Lista de Promocion del Producto-----------------
+postVerListaPromocionProducto: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,14,"Lista de Promocion del Producto","El usuario ingreso a la pantalla de Ver Lista Promocion del Producto")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-----------------------Salir de la lista de Promocion del Producto---------------------------
+postSalirListaPromocionProducto:async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Salir","Se salio de la pantalla Lista de Promocion del Producto)',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
+//------------------------Actualizar datos de Promocion del Producto----------------
+postActualizarPromocionProducto: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,15,"Actualizacion Promocion del Producto","El usuario realizo una actualizacion en Promocion del Producto")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------Eliminar datos de Promocion del Producto-----------------
+postEliminarPromocionProducto: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,16,"Eliminar Promocion","El usuario elimino datos en Descuento")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------MODULO DE CLIENTES-----------------------------------------------
+//------------PANTALLA DE CLIENTES-------------------
+postPantallaCliente: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,12,"Pantalla de Promocion del Producto","El usuario ingreso a Promocion del Producto")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+}, 
+//---------------------Ingresar un nuevo Cliente----------------
+postInsertBCliente: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Promocion del Producto","El usuario registro una nueva Promocion del Producto")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+//---------------------VER LISTA DE CLIENTES-------------------------------------------
+postVerListaClientes: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,14,"Lista de Clientes","El usuario ingreso a la pantalla de Ver Lista Clientes")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-----------------------Salir de la lista de Clientes---------------------------
+postSalirListaClientes:async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,2,"Salir","Se salio de la pantalla Lista de Clientes")',
+        [idusuario.Id]
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error en consumir el API");
+    }
+},
+
+//------------------------Actualizar datos de Clientes----------------
+postActualizarClientes: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,15,"Actualizacion Clientes","El usuario realizo una actualizacion en Promocion del Clientes")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------Eliminar datos de Clientes-----------------
+postEliminarClientes: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,16,"Eliminar Clientes","El usuario elimino datos en Clientes")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-----------------------DATOS DE EXPEDIENTE-------------------------
+postInsertBExpediente: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Expediente","El usuario registro un nuevo Expediente")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//--------------------------EXPEDIENTE DETALLE---------------------
+postInsertBExpedienteDetalle: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Expediente Detalle","El usuario registro un Expediente Detalle")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+//-------------------NUEVO DIAGNOSTICO----------------------
+postInsertBDiagnostico: async (idusuario)=>{
+    const conexion = await connectDB();
+    try {
+        const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,13,"Registro de Diagnostico","El usuario registro un nuevo Diagnostico")',
+        idusuario.Id,
+        );
+        return {estado:"OK"}; 
+    } catch (error) {
+        console.log(error);
+        throw new Error("Error al crear el API");
+    }
+},
+
+
+
+
+
+
+
+
+
 
 }
