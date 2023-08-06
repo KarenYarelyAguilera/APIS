@@ -15,10 +15,11 @@ export const ModModelo = {
   postInsertModelo: async (modelo) => {
     try {
     const conexion = await connectDB();
-      const [filas] = await conexion.query("insert into tbl_modelo (IdMarca, detalle) values (?,?);",
+      const [filas] = await conexion.query("insert into tbl_modelo (IdMarca, detalle,anio) values (?,?,?);",
         [
           modelo.IdMarca,
           modelo.detalle,
+          modelo.anio,
         ]
       );
       return { id: filas.insertId };
@@ -30,10 +31,11 @@ export const ModModelo = {
   putUpdateModelo: async (modelo)=>{
       try {
         const conexion = await connectDB()
-        const [filas] = await conexion.query("UPDATE tbl_modelo set IdMarca= ?, detalle = ? WHERE IdModelo= ?;",
+        const [filas] = await conexion.query("UPDATE tbl_modelo set IdMarca= ?, detalle = ?, anio=? WHERE IdModelo= ?;",
         [
           modelo.IdMarca,
           modelo.detalle,
+          modelo.anio,
           modelo.IdModelo,
         ]
         )
