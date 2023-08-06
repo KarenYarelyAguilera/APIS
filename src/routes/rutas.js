@@ -46,6 +46,7 @@ import { ContrPais } from "../controllers/pais.js";
 import { ContrGenero } from "../controllers/genero.js";
 import { ContrPermisos } from "../controllers/permisos.js";
 
+import {ContrRecordatorio} from"../controllers/recordatorio.js"
 
 const router = express.Router();
 
@@ -155,6 +156,11 @@ router.post('/preguntas/compararR',ContrPreguntas.compararRespuesta)
 
 router.post('/correo/existe',ContrPreguntas.getUser) 
 router.post('/pregYresp',ContrPreguntas.getPyR)
+router.delete('/eliminarRespuesta',ContrPreguntas.delRespuestas)
+router.put('/pyr/editar',ContrPreguntas.putRespuestas)
+router.get('/respuesta',ContrPreguntas.getRespuesta)
+router.get('/pregunta',ContrPreguntas.getPregunta)
+
 
 
 //ventaDetallePromocion
@@ -226,7 +232,6 @@ router.post('/bitacora/EliminarGarantia',ContrBitacora.postEliminarGarantia)
 
 
 
-
 //Garantias
 router.get('/garantias', ContrGarantia.getGarantias)
 router.post('/garantias/crear', ContrGarantia.postGarantia)
@@ -260,7 +265,7 @@ router.delete('/pagos/eliminar', ContrPago.delPago)
 //Parametros
 router.get('/parametros', ContrParametro.getParametros)
 router.get('/parametros', ContrParametro.getIntentos)
-router.get('/parametros', ContrParametro.getPreguntas)
+router.post('/parametros/AdminPreguntas', ContrParametro.getPreguntas)
 router.get('/parametros', ContrParametro.getImpuesto)
 router.get('/parametros', ContrParametro.getTiempoDReuintentoLogin)
 router.put('/parametros/actualizar', ContrParametro.putParametro)
@@ -352,5 +357,13 @@ router.get('/Genero',ContrGenero.getGenero)
 
 //Permisos
 router.get("/permisos", ContrPermisos.getPermisos)
+
+//Recordatorio
+router.get('/recordatorios',ContrRecordatorio.getCitas)
+router.get('/recordatorio',ContrRecordatorio.getCita)
+router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
+router.delete('/eliminarCita',ContrRecordatorio.deleteCita)
+router.put('/actualizarCita',ContrRecordatorio.putCitas)
+
 
 export default router
