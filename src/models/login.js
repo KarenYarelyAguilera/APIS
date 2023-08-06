@@ -12,7 +12,7 @@ export const ModLogin = {
       conexion.end()
       return {state :"ok"}      
     } catch (error) {
-      
+      conexion.end()
     }
   },
 
@@ -41,9 +41,8 @@ export const ModLogin = {
         "select u.Nombre_Usuario,u.Estado_Usuario,r.Rol,u.Correo_Electronico,u.Id_Usuario from TBL_MS_USUARIO as u INNER JOIN tbl_ms_roles as r  ON  u.`Id_Rol` = r.`Id_Rol`   where Correo_Electronico  =  ?",
         [Usuario.correo]
       );
-
+      conexion.end()
       if (filas.length === 1) {
-        conexion.end()
         return filas;
       } else {
         return false;
@@ -69,10 +68,11 @@ export const ModLogin = {
         psswrd:clave.clave,
         hashed:filas[0].Contrasenia
       }
-
+      conexion.end()
       return await ModLogin.comparePass(compare)
 
     } catch (e) {
+      conexion.end()
       throw e;
     }
   },
