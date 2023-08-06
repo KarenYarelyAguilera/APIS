@@ -36,7 +36,7 @@ export const ModRecordatorio = {
     let conexion
     try {
      conexion = await connectDB();
-      const conexion = await connectDB();
+       conexion = await connectDB();
       const [fila2]=await  conexion.query("SELECT * FROM tbl_recordatorio where `IdCliente`=? and fecha=?",
       [
         citas.IdCliente,
@@ -102,18 +102,20 @@ export const ModRecordatorio = {
 },
 
 getfecha: async(citas)=>{
-
+let conexion
   try {
-    const conexion = await connectDB();
+    conexion = await connectDB();
       const [filas] = await conexion.query("SELECT d.`fechaExpiracion` FROM tbl_expedientedetalle as d inner join tbl_expediente as e on d.`IdExpediente`=e.`IdExpediente` INNER JOIN tbl_cliente as c on e.`IdCliente`=c.`idCliente` where e.`IdCliente`=? ORDER BY d.`fechaExpiracion` DESC LIMIT 1;",
        [
         citas.IdCliente,
         // citas.fecha,
        ],
       );
+      conexion.end()
       return filas  [0] ; // Solo devolvemos el valor de 'fechaExpiracion'
     } catch (error) {
       console.log(error);
+      conexion.end()
       throw new Error("Error al obtener el registro");
     }
 },
