@@ -53,13 +53,14 @@ export const ModParametro = {
       throw new Error("Error al obtener los intentos");
     }
   },
+  //Usado en la pantalla del perfil en agregar preguntas según el parámetro
   getPreguntas: async () => {
     let conexion
     try {
      conexion = await connectDB();
       const [filas] = await conexion.query("SELECT valor FROM tbl_ms_parametros where `Id_Parametro`=2");
       conexion.end()
-      return filas;
+      return filas[0].valor; // Solo devolvemos el valor del parámetro 'ADMIN_PREGUNTAS' JohaLa26
     } catch (error) {
       console.log(error);
       conexion.end()

@@ -36,7 +36,16 @@ export const ModRecordatorio = {
     let conexion
     try {
      conexion = await connectDB();
-      const [filas] = await conexion.query("INSERT INTO tbl_recordatorio ( IdRecordatorio,IdCliente,Nota,fecha) values(?,?,?,?);",
+      const conexion = await connectDB();
+      const [fila2]=await  conexion.query("SELECT * FROM tbl_recordatorio where `IdCliente`=? and fecha=?",
+      [
+        citas.IdCliente,
+        citas.fecha,
+      ])
+      if (fila2.length>0) {
+        return false;
+      }else{
+        const [filas] = await conexion.query("INSERT INTO tbl_recordatorio ( IdRecordatorio,IdCliente,Nota,fecha) values(?,?,?,?);",
         [
           citas.IdRecordatorio,
           citas.IdCliente,
@@ -47,6 +56,8 @@ export const ModRecordatorio = {
       );
       conexion.end()
       return { id: filas.insertId };
+      }
+      
     } catch (error) {
       console.log(error);
       conexion.end()
@@ -89,6 +100,24 @@ export const ModRecordatorio = {
       throw new Error("Error al actualizar la cita")
     }
 },
+
+getfecha: async(citas)=>{
+
+  try {
+    const conexion = await connectDB();
+      const [filas] = await conexion.query("SELECT d.`fechaExpiracion` FROM tbl_expedientedetalle as d inner join tbl_expediente as e on d.`IdExpediente`=e.`IdExpediente` INNER JOIN tbl_cliente as c on e.`IdCliente`=c.`idCliente` where e.`IdCliente`=? ORDER BY d.`fechaExpiracion` DESC LIMIT 1;",
+       [
+        citas.IdCliente,
+        // citas.fecha,
+       ],
+      );
+      return filas  [0] ; // Solo devolvemos el valor de 'fechaExpiracion'
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error al obtener el registro");
+    }
+},
+
 
 
 
