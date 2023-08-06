@@ -687,6 +687,7 @@ postInsertBExpediente: async (req,res)=> {
     }
 },
 
+
 //-------------------NUEVO DIAGNOSTICO----------------------
 postInsertBDiagnostico: async (req,res)=> {
     try {
