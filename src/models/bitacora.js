@@ -1180,7 +1180,7 @@ postIngresoPerfil: async (idusuario)=>{
            console.log(error);
            conexion.end()
            throw new Error("Error al crear el API");
-       }
+        }
    },
 
    postActualizarCita: async (idusuario)=>{
