@@ -361,6 +361,16 @@ router.delete('/Genero/borrar',ContrGenero.deleteGenero)
 
 //Permisos
 router.get("/permisos", ContrPermisos.getPermisos)
+router.post("/permisosRol", ContrPermisos.getPermisosXRol)
+router.put("/permisosOBJ1",ContrPermisos.putPermisosXRolOBJ1)
+router.put("/permisosOBJ2",ContrPermisos.putPermisosXRolOBJ2)
+router.put("/permisosOBJ3",ContrPermisos.putPermisosXRolOBJ3)
+router.put("/permisosOBJ4",ContrPermisos.putPermisosXRolOBJ4)
+router.put("/permisosOBJ5",ContrPermisos.putPermisosXRolOBJ5)
+router.put("/permisosOBJ6",ContrPermisos.putPermisosXRolOBJ6)
+router.put("/permisosOBJ7",ContrPermisos.putPermisosXRolOBJ7)
+router.put("/permisosOBJ8",ContrPermisos.putPermisosXRolOBJ8)
+router.put("/permisosOBJ9",ContrPermisos.putPermisosXRolOBJ9)
 
 //Recordatorio
 router.get('/recordatorios',ContrRecordatorio.getCitas)
