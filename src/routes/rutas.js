@@ -229,14 +229,45 @@ router.post('/bitacora/NuevaGarantia',ContrBitacora.postInsertGarantia)
 router.post('/bitacora/ListaGarantia',ContrBitacora.postVerListaGarantia)
 router.post('/bitacora/ActualizacionGarantia',ContrBitacora.postActualizarGarantia)
 router.post('/bitacora/EliminarGarantia',ContrBitacora.postEliminarGarantia)
-
+//--Descuento--
+router.post('/bitacora/Descuento',ContrBitacora.postPantallaDescuento)
+router.post('/bitacora/NuevaGarantia',ContrBitacora.postInsertDescuento)
+router.post('/bitacora/SalirListaGarantia',ContrBitacora.postSalirListaDescuento)
+router.post('/bitacora/ActualizacionDescuento',ContrBitacora.postActualizarDescuento)
+router.post('/bitacora/EliminarDescuento',ContrBitacora.postEliminarDescuento)
+//--Descuento Promocion 
+router.post('/bitacora/NuevaGarantia',ContrBitacora.postInsertBPromocion)
+router.post('/bitacora/SalirListaGarantia',ContrBitacora.postSalirListaPromocion)
+router.post('/bitacora/ActualizacionDescuento',ContrBitacora.postActualizarPromocion)
+router.post('/bitacora/EliminarDescuento',ContrBitacora.postEliminarPromocion)
+//Clientes
+router.post('/bitacora/cliente',ContrBitacora.postPantallaCliente)
+router.post('/bitacora/Nuevacliente',ContrBitacora.postInsertBCliente)
+router.post('/bitacora/SalirListacliente',ContrBitacora.postSalirListaClientes)
+router.post('/bitacora/Actualizacioncliente',ContrBitacora.postActualizarClientes)
+router.post('/bitacora/Eliminarcliente',ContrBitacora.postEliminarClientes)
+//--Datos de expediente 
+router.post('/bitacora/expediente',ContrBitacora.postInsertBExpediente)
+router.post('/bitacora/Nuevaexpediente',ContrBitacora.postInsertBCliente)
+router.post('/bitacora/Diagnostico',ContrBitacora.postInsertBDiagnostico)
+router.post('/bitacora/Actualizacioncexpediente',ContrBitacora.postActualizarClientes)
+router.post('/bitacora/Eliminarexpediente',ContrBitacora.postEliminarClientes)
+//Perfil 
+router.post('/bitacora/perfil',ContrBitacora.postIngresoPerfil)
+router.post('/bitacora/cambiocontrasena',ContrBitacora.postContrModifi)
+router.post('/bitacora/cambiopreguntas',ContrBitacora.postPreModifi)
+router.post('/bitacora/salirperfil',ContrBitacora.postSalirPerfil)
+//Recordatotio
+router.post('/bitacora/agregarcita',ContrBitacora.postNuevaCita)
+router.post('/bitacora/eliminarcita',ContrBitacora.postBorrarCita)
+router.post('/bitacora/actualizarcita',ContrBitacora.postActualizarCita)
 
 
 //Garantias
-router.get('/garantias', ContrGarantia.getGarantias)
-router.post('/garantias/crear', ContrGarantia.postGarantia)
-router.put('/garantias/actualizar', ContrGarantia.putGarantia)
-router.delete('/garantias/eliminar', ContrGarantia.delGarantia)
+router.get('/garantias',ContrGarantia.getGarantias)
+router.post('/garantias/crear',ContrGarantia.postGarantia)
+router.put('/garantias/actualizar',ContrGarantia.putGarantia)
+router.delete('/garantias/eliminar',ContrGarantia.delGarantia)
 
 //Inventario
 router.get('/inventarios', ContrInventario.getInventarios)
@@ -309,8 +340,8 @@ router.delete('/sucursal/eliminar',ContrSucursal.deleteSucursal)
 //TipoPago
 router.get('/tipopago', ContrTipoPago.getTipoPagos)
 router.post('/tipopago/crear', ContrTipoPago.postTipoPago)
-router.put('/tipopago/actualizar', ContrTipoPago.putTipoPago)
-router.delete('/tipopago/eliminar', ContrTipoPago.delTipoPago)
+router.put('/tipopago/actualizar',ContrTipoPago.putTipoPago)
+router.delete('/tipopago/eliminar',ContrTipoPago.delTipoPago)
 
 
 //DetalleCompra
