@@ -1150,7 +1150,7 @@ postIngresoPerfil: async (idusuario)=>{
    },
 
    postSalirPerfil: async (idusuario)=>{
-    let conexion
+    let conexion  //comentario para karen xd
        try {
            conexion = await connectDB();
            const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Salir de perfil","El usuario salio de Mi Perfil")',
