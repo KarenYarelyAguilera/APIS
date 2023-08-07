@@ -327,6 +327,7 @@ router.delete('/VentasDetalles',ContrVentaDetalle.DeleteVentaDetalle)
 
 //Kardex
 router.get('/kardex',ContrKardex.GetKardex)
+router.post('/ProductoKardex',ContrKardex.postProductoKardexFiltro)
 router.post('/kardex',ContrKardex.PostKardex)
 
 //VentaDetalleDescuento
