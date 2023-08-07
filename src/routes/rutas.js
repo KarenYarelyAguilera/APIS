@@ -412,11 +412,11 @@ router.delete('/eliminarCita',ContrRecordatorio.deleteCita)
 router.put('/actualizarCita',ContrRecordatorio.putCitas)
 router.post('/recordatorios/fecha',ContrRecordatorio.getFecha)
 
+
 //Descuentos
 router.get('/Descuento',ContrDescuento.getDescuento)
 router.post('/Descuento/NuevoDescuento',ContrDescuento.postInsertDescuento)
 router.put('/Descuento/ActualizarDescuento',ContrDescuento.putDescuento)
 router.delete('/Descuento/BorrarDescuento',ContrDescuento.deleteDescuento)
-
 
 export default router
