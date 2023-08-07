@@ -354,6 +354,9 @@ router.put('/Estado/Inactivo',ContrEstado.updInactivo)
 
 //Genero
 router.get('/Genero',ContrGenero.getGenero)
+router.post('/Genero/insertar',ContrGenero.postInsertGenero)
+router.put('/Genero/actualizar',ContrGenero.putInsertGenero)
+router.delete('/Genero/borrar',ContrGenero.deleteGenero)
 
 //Permisos
 router.get("/permisos", ContrPermisos.getPermisos)
