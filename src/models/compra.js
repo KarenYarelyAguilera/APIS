@@ -8,7 +8,7 @@ export const ModCompras = {
     try {
        conexion = await connectDB();
       const [filas] = await conexion.query(
-        "SELECT * FROM tbl_compra as cmp INNER JOIN  tbl_proveedor as pvd ON cmp.IdProveedor=pvd.IdProveedor"
+        "SELECT * FROM tbl_compra "
       );
       conexion.end()
       return filas;
