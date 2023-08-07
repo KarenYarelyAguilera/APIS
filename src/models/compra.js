@@ -4,33 +4,40 @@ import { ModInventario } from "./inventario.js";
 
 export const ModCompras = {
   getCompras: async () => {
+    let conexion
     try {
-      const conexion = await connectDB();
+       conexion = await connectDB();
       const [filas] = await conexion.query(
         "SELECT * FROM tbl_compra as cmp INNER JOIN  tbl_proveedor as pvd ON cmp.IdProveedor=pvd.IdProveedor"
       );
+      conexion.end()
       return filas;
     } catch (error) {
       console.log(error);
+      conexion.end()
       throw new Error("Error al obtener compras");
     }
   },
 
   postCompras: async () => {
+    let conexion
     try {
-      const conexion = await connectDB();
+      conexion = await connectDB();
       const [filas] = await conexion.query(
         "INSERT INTO tbl_compra (totalCompra) VALUES (null)"
       );
+      conexion.end()
       return filas.insertId;
     } catch (error) {
+      conexion.end()
       throw new Error("Error al insertar compra");
     }
   },
 
   postCompraDetalle: async (detalles,compraId) => {
+    let conexion
     try {
-      const conexion = await connectDB();
+       conexion = await connectDB();
   
       const promises = detalles.map(async (detalle) => {
         await ModInventario.putUpdateInventarioCompras(detalle)
@@ -52,7 +59,9 @@ export const ModCompras = {
         "UPDATE tbl_compra SET totalCompra = ? WHERE IdCompra = ?",
         [totalCosto, compraId]
       );
+      conexion.end()
     } catch (error) {
+      conexion.end()
       throw new Error("Error al insertar el detalle de compra");
     }
   },
