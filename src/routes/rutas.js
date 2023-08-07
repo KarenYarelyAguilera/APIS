@@ -265,7 +265,7 @@ router.delete('/pagos/eliminar', ContrPago.delPago)
 //Parametros
 router.get('/parametros', ContrParametro.getParametros)
 router.get('/parametros', ContrParametro.getIntentos)
-router.post('/parametros/AdminPreguntas', ContrParametro.getPreguntas)
+router.get('/parametros/AdminPreguntas', ContrParametro.getPreguntas)
 router.get('/parametros', ContrParametro.getImpuesto)
 router.get('/parametros', ContrParametro.getTiempoDReuintentoLogin)
 router.put('/parametros/actualizar', ContrParametro.putParametro)
@@ -367,6 +367,7 @@ router.get('/recordatorio',ContrRecordatorio.getCita)
 router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
 router.delete('/eliminarCita',ContrRecordatorio.deleteCita)
 router.put('/actualizarCita',ContrRecordatorio.putCitas)
+router.post('/recordatorios/fecha',ContrRecordatorio.getFecha)
 
 
 export default router

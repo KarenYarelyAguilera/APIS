@@ -29,12 +29,18 @@ export const ContrRecordatorio = {
                 Nota,
                 fecha,
             });
-            res.status(201).json({ id: result.id });
+            if (result===false) {
+              res.status(500).json({ message: "La cita ya existe" });
+            }else{
+              res.status(201).json({ id: result.id });
+            }
+           
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: "Error al agendar la cita" });
         }
     },
+
     deleteCita: async (req,res)=>{
         try {
           const {IdRecordatorio} = req.body
@@ -59,4 +65,24 @@ export const ContrRecordatorio = {
           throw new Error("Error al consumir el api")
         }
       },
+
+      getFecha: async (req, res) => {
+        try {
+          const { IdCliente } = req.body;
+          console.log(req.body);
+          const result = await ModRecordatorio.getfecha({ IdCliente });
+          res.status(200).json(result);
+          console.log(result);
+        } catch (error) {
+          console.log(error);
+          res.status(500).json({
+            message: "Error al obtener el registro de fecha en tbl_expedientedetalle",
+          });
+        }
+      },
+
+
+    /*const Parametro = await ModParametro.getPreguntas();
+    res.status(200).json(Parametro); */
+    
 }
