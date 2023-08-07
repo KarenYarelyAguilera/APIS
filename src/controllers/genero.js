@@ -18,6 +18,7 @@ export const ContrGenero= {
         }
     },
         
+    
         
     putInsertGenero : async (req,res)=>{
         try {
