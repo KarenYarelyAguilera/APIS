@@ -1105,7 +1105,7 @@ postIngresoPerfil: async (idusuario)=>{
     let conexion
        try {
            conexion = await connectDB();
-           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Ingreso a Pefil","El usuario ingreso a Mi Perfil")',
+           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Ingreso a Perfil","El usuario ingreso a Mi Perfil")',
            idusuario.Id,
            );
            conexion.end()
@@ -1121,7 +1121,7 @@ postIngresoPerfil: async (idusuario)=>{
     let conexion
        try {
            conexion = await connectDB();
-           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Moficacion","El usuario modifico las preguntas de seguridad")',
+           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Moficacion","El usuario modifico la contraseña")',
            idusuario.Id,
            );
            conexion.end()
@@ -1137,7 +1137,7 @@ postIngresoPerfil: async (idusuario)=>{
     let conexion
        try {
            conexion = await connectDB();
-           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Moficacion","El usuario modifico su contraseña")',
+           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,11,"Moficacion",""El usuario modifico las preguntas de seguridad")',
            idusuario.Id,
            );
            conexion.end()
@@ -1171,7 +1171,7 @@ postIngresoPerfil: async (idusuario)=>{
     let conexion
        try {
            conexion = await connectDB();
-           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Nueva Cita","El usuario agrego una nueva cita")',
+           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Nueva Cita","El usuario agregó una nueva cita")',
            idusuario.Id,
            );
            conexion.end()
@@ -1187,7 +1187,7 @@ postIngresoPerfil: async (idusuario)=>{
     let conexion
        try {
            conexion = await connectDB();
-           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Nueva Cita","El usuario agrego una nueva cita")',
+           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Actualizar Cita","El usuario actuzalizó una cita")',
            idusuario.Id,
            );
            conexion.end()
@@ -1203,7 +1203,7 @@ postIngresoPerfil: async (idusuario)=>{
     let conexion
        try {
            conexion = await connectDB();
-           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Nueva Cita","El usuario agrego una nueva cita")',
+           const [filas] = await conexion.query ('Insert into tbl_ms_bitacora (fecha,Id_Usuario,Id_Objeto,accion,descripcion) values(current_timestamp(),?,5,"Borrar Cita","El usuario eliminó una cita")',
            idusuario.Id,
            );
            conexion.end()
