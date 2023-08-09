@@ -28,8 +28,12 @@ export const ModProducto = {
           producto.descripcion,
         ]
       );
+      const [filas2] = await conexion.query(" INSERT INTO tbl_inventario (IdProducto, cantidad) VALUES (last_insert_id(),0);",
+        [
+        producto.IdProducto,
+        ]);
       conexion.end()
-      return { id: filas.insertId };
+      return { id: filas.insertId, id: filas2.insertId };
     } catch (error) {
       console.log(error);
       conexion.end()
