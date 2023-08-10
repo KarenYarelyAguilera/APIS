@@ -48,6 +48,8 @@ import { ContrPermisos } from "../controllers/permisos.js";
 
 import {ContrRecordatorio} from"../controllers/recordatorio.js"
 import { ContrDescuento } from "../controllers/descuento.js";
+import { ContrLente } from "../controllers/lente.js";
+import { ContrDescuentoLente } from "../controllers/descuentoLente.js";
 
 const router = express.Router();
 
@@ -418,5 +420,20 @@ router.get('/Descuento',ContrDescuento.getDescuento)
 router.post('/Descuento/NuevoDescuento',ContrDescuento.postInsertDescuento)
 router.put('/Descuento/ActualizarDescuento',ContrDescuento.putDescuento)
 router.delete('/Descuento/BorrarDescuento',ContrDescuento.deleteDescuento)
+
+//LENTES
+router.get('/lentes', ContrLente.getLentes)
+router.post('/lente/crear', ContrLente.postLente)
+router.put('/lente/actualizar', ContrLente.putLente)
+router.delete('/lente/eliminar', ContrLente.delLente)
+
+
+//DescuentosdeLentes
+router.get('/DescuentosLentes',ContrDescuentoLente.getDescuentosLentes)
+router.post('/DescuentoLente/NuevoDescuentoLente',ContrDescuentoLente.postInsertDescuentoLente)
+router.put('/DescuentoLente/ActualizarDescuentoLente',ContrDescuentoLente.putDescuentoLente)
+router.delete('/DescuentoLente/BorrarDescuentoLente',ContrDescuentoLente.deleteDescuentoLente)
+
+
 
 export default router
