@@ -700,6 +700,382 @@ postInsertBDiagnostico: async (req,res)=> {
 },
 
 
+//--------------PERFIL-----------------
+postIngresoPerfil: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postIngresoPerfil({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postContrModifi: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postContrModifi({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postPreModifi: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postPreModifi({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postSalirPerfil: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirPerfil({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+   //-------------------RECORDATORIOS-------------------------
+   postNuevaCita: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postNuevaCita({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postActualizarCita: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarCita({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postBorrarCita: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postBorrarCita({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+//-------------------------------MANTENIMIENTO---------------------------
+//-------------------INGRESO A LA PANTALLA DE SUCURSAL-----------------
+postPantallaSucursal: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postPantallaSucursal({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//-------------------INGRESO A LA PANTALLA DE MODELO-----------------
+
+//---------------Nuevo Modelo--------------------
+postInsertBModelo: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBModelo({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de Modelo-----------------
+postVerListaModelo: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaModelo({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-----------------------Salir de la lista de Modelo---------------------------
+postSalirListaModelo: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaModelo({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Modelo----------------
+postActualizarModelo:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarModelo({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos de marca-----------------
+postEliminarModelo :  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarModelo({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+/////////////////////////////////////////////////////////////
+//---------------Nuevo Marca--------------------
+postInsertBMarca: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBMarca({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de Marca-----------------
+postVerListaMarca: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaMarca({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-----------------------Salir de la lista de Marca---------------------------
+postSalirListaMarca: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaMarca({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Marca----------------
+postActualizarMarca:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarMarca({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos Marca-----------------
+postEliminarMarca :  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarMarca({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+
+//////////////////////////////////////////////////////////////
+
+//-------------------  PANTALLA DE METODO DE PAGO-----------------
+
+//---------------Nuevo Metodo de pago--------------------
+postInsertBMetodopago: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBMetodopago({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de  Metodo de pago-----------------
+postSalirListaMetodopago: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaMetodopago({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de  Metodo de pago----------------
+postActualizarMetodopago:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarMetodopago({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos  Metodo de pago----------------
+postEliminarMetodopago :  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarMetodopago({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+
+//////////////////////////////////////////////////////////////
+
+//-------------------INGRESO A LA PANTALLA DE DEPARTAMENTO-----------------
+postPantallaDepartamento : async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postPantallaDepartamento({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//---------------Nuevo Departamento--------------------
+postInsertBDepartamento: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBDepartamento({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de Departamento-----------------
+postVerListaDepartamento: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaDepartamento({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//////////////////////////////////////////////////////////////////////////
+//-----------------------Salir de la lista de Departamento---------------------------
+postSalirListaDepartamento: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaDepartamento({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Departamento----------------
+postActualizarDepartamento:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarDepartamento({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos Departamento-----------------
+postEliminarDepartamento:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarDepartamento({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+
+//-------------------INGRESO A LA PANTALLA DE PAIS-----------------
+//---------------Nuevo Pais--------------------
+postInsertBPais: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBPais({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de Pais-----------------
+postVerListaPais: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaPais({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-----------------------Salir de la lista de Pais---------------------------
+postSalirListaPais: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaPais({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Pais----------------
+postActualizarPais:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarPais({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos Pais-----------------
+postEliminarPais:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarPais({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 

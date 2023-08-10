@@ -8,7 +8,7 @@ export const ModVentas = {
 
         try {
              conexion = await connectDB();
-            const [filas] = await conexion.query("SELECT v.IdVenta, concat_ws(' ', c.nombre, c.apellido) as Cliente, e.nombre as Empleado, v.fecha, v.fechaEntrega, v.estado, v.totalAPagar as Total FROM tbl_venta as v inner join tbl_cliente as c on v.IdCliente=c.idCliente inner join tbl_empleado as e on v.idEmpleado=e.IdEmpleado")
+            const [filas] = await conexion.query("select v.IdVenta, v.fecha, v.IdCliente as Cliente, v.valorVenta as ValorVenta from tbl_venta as v;")
             conexion.end()
             return filas;
         } catch (error) {
@@ -18,32 +18,37 @@ export const ModVentas = {
         }
     },
 
-    postInsertVentas: async (venta)=>{
+    getVentaDetalle: async ()=>{
         let conexion
-         conexion = await connectDB();
+
         try {
-            const [filas] = await conexion.query ("INSERT INTO tbl_venta (fecha,fechaLimiteEntrega,fechaEntrega,estado,observacion,IdCliente,idEmpleado,NumeroCAI,RTN,isv,subtotal,totalAPagar) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);",
-            [
-             venta.fecha,
-             venta.fechaLimiteEntrega,
-             venta.fechaEntrega,
-             venta.estado,
-             venta. observacion,
-             venta.IdCliente,
-             venta.idEmpleado,
-             venta.NumeroCAI,
-             venta.rnt,
-             venta.isv,
-             venta.subtotal,
-             venta.totalAPagar,
-            ]
-            );
+             conexion = await connectDB();
+            const [filas] = await conexion.query("select vd.IdVentaDetalle, v.IdVenta, v.fecha, concat_ws(' ', c.nombre, c.apellido) as Cliente, e.nombre as Empleado, m.detalle as Producto, l.lente as TipoDeLente, g.descripcion as Garantia, g.mesesGarantia as Meses, vd.precioAro , vd.precioLente, vd.cantidad, vd. subtotal, vd.rebaja, vd.totalVenta from tbl_ventadetalle as vd inner join tbl_venta as v  on vd.IdVenta=v.IdVenta inner join tbl_producto as p on p.IdProducto=vd.IdProducto inner join tbl_modelo as m on m.IdModelo=p.IdModelo inner join tbl_lente as l on l.IdLente=vd.IdLente inner join tbl_garantia as g on g.IdGarantia=vd.IdGarantia inner join tbl_empleado as e on e.IdEmpleado=v.idEmpleado inner join tbl_cliente as c on c.idCliente=v.IdCliente;")
             conexion.end()
-            return {estado:"OK"};
+            return filas;
         } catch (error) {
             console.log(error);
             conexion.end()
-            throw new Error("Error al crear una nueva venta");    
+            throw new Error("Error al obtener las ventas");
+        }
+    },
+
+    postInsertVentas: async (venta) => {
+        const conexion = await connectDB();
+        try {
+            const [filas] = await conexion.query("INSERT INTO tbl_venta(`fechaEntrega`, `fechaLimiteEntrega`, `IdCliente`, `idEmpleado`, `RTN`) VALUES (?, ?, ?, ?, ?);",
+                [
+                    venta.fechaEntrega,
+                    venta.fechaLimiteEntrega,
+                    venta.IdCliente,
+                    venta.idEmpleado,
+                    venta.RTN,
+                ]
+            );
+            return { estado: "OK" };
+        } catch (error) {
+            console.log(error);
+            throw new Error("Error al crear una nueva venta");
         }
     },
 

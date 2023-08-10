@@ -9,11 +9,12 @@ export const ContrVentas ={
         
     },
 
-    postInsertVentas: async (req,res)=> {
+    postInsertVentas: async (req, res) => {
+        
         try {
-            const {fecha,fechaLimiteEntrega,fechaEntrega,estado,observacion,IdCliente,idEmpleado,NumeroCAI,RTN,isv,subtotal,totalAPagar}=req.body
-            const result = await ModVentas.postInsertVentas({fecha,fechaLimiteEntrega,fechaEntrega,estado,observacion,IdCliente,idEmpleado,NumeroCAI,RTN,isv,subtotal,totalAPagar})
-            res.status(201).json({ id: result.id});
+            const { fechaEntrega, fechaLimiteEntrega, IdCliente, idEmpleado, RTN} = req.body
+            const result = await ModVentas.postInsertVentas({ fechaEntrega, fechaLimiteEntrega, IdCliente, idEmpleado, RTN})
+            res.status(201).json({ id: result.id });
         } catch (error) {
             console.log(error);
         }
