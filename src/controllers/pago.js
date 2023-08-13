@@ -45,7 +45,7 @@ export const ContrPago = {
     } catch (error) {
       console.log(error);
       throw new Error("Error al consumir el api");
-    }
-  },
-  
+    }
+  },
+  
 };

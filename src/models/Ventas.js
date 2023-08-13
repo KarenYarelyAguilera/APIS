@@ -19,12 +19,12 @@ export const ModVentas = {
         }
     },
 
-    getVentaDetalle: async ()=>{
+    postVentaDetalle: async (ventadetalle)=>{
         let conexion
 
         try {
              conexion = await connectDB();
-            const [filas] = await conexion.query("select vd.IdVentaDetalle, v.IdVenta, v.fecha, concat_ws(' ', c.nombre, c.apellido) as Cliente, e.nombre as Empleado, m.detalle as Producto, l.lente as TipoDeLente, g.descripcion as Garantia, g.mesesGarantia as Meses, vd.precioAro , vd.precioLente, vd.cantidad, vd. subtotal, vd.rebaja, vd.totalVenta from tbl_ventadetalle as vd inner join tbl_venta as v  on vd.IdVenta=v.IdVenta inner join tbl_producto as p on p.IdProducto=vd.IdProducto inner join tbl_modelo as m on m.IdModelo=p.IdModelo inner join tbl_lente as l on l.IdLente=vd.IdLente inner join tbl_garantia as g on g.IdGarantia=vd.IdGarantia inner join tbl_empleado as e on e.IdEmpleado=v.idEmpleado inner join tbl_cliente as c on c.idCliente=v.IdCliente;")
+            const [filas] = await conexion.query("select vd.IdVenta, v.fecha, v.NumeroCAI, s.direccion, concat_ws(' ', c.nombre, c.apellido) as Cliente, v.RTN, concat_ws(' ', e.nombre, e.apellido) as Empleado, v.fechaEntrega, v.fechaLimiteEntrega, tp.descripcion as TipoDePago, p.descripcion as Promocion, pr.descripcion as Producto, g.descripcion as Garantia, g.mesesGarantia as Meses, vd.cantidad, vd.precioAro, vd.precioLente, vd.subtotal, vd.rebaja, vd.totalVenta from tbl_ventadetalle as vd inner join tbl_venta as v on v.IdVenta=vd.IdVenta inner join tbl_garantia as g on vd.IdGarantia=g.IdGarantia inner join tbl_promocion as p on p.IdPromocion=vd.IdPromocion inner join tbl_descuento as d on d.IdDescuento=vd.IdDescuento inner join tbl_producto as pr on pr.IdProducto=vd.IdProducto inner join tbl_cliente as c on c.IdCliente=v.IdCliente inner join tbl_empleado as e on e.IdEmpleado=v.idEmpleado inner join tbl_sucursal as s on s.IdSucursal=e.IdSucursal inner join tbl_pago as pa on pa.IdVenta=v.IdVenta inner join tbl_tipopago as tp on tp.IdTipoPago=pa.IdTipoPago;",[ventadetalle.id])
             conexion.end()
             return filas;
         } catch (error) {
