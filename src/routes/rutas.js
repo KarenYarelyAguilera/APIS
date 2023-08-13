@@ -366,6 +366,7 @@ router.delete('/Genero/borrar',ContrGenero.deleteGenero)
 //Permisos
 router.get("/permisos", ContrPermisos.getPermisos)
 router.post("/permisosRol", ContrPermisos.getPermisosXRol)
+router.post("/permiso/consulta",ContrPermisos.postPermisosObj)
 router.put("/permisosOBJ1",ContrPermisos.putPermisosXRolOBJ1)
 router.put("/permisosOBJ2",ContrPermisos.putPermisosXRolOBJ2)
 router.put("/permisosOBJ3",ContrPermisos.putPermisosXRolOBJ3)
