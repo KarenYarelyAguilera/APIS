@@ -258,10 +258,12 @@ router.post('/bitacora/perfil',ContrBitacora.postIngresoPerfil)
 router.post('/bitacora/cambiocontrasena',ContrBitacora.postContrModifi)
 router.post('/bitacora/cambiopreguntas',ContrBitacora.postPreModifi)
 router.post('/bitacora/salirperfil',ContrBitacora.postSalirPerfil)
-//Recordatotio
+//Citas
+router.post('/bitacora/citas',ContrBitacora.postIngresoPCita)
 router.post('/bitacora/agregarcita',ContrBitacora.postNuevaCita)
 router.post('/bitacora/eliminarcita',ContrBitacora.postBorrarCita)
 router.post('/bitacora/actualizarcita',ContrBitacora.postActualizarCita)
+router.post('/bitacora/citasSalir',ContrBitacora.postSalirCita)
 
 
 //Garantias
@@ -411,6 +413,10 @@ router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
 router.delete('/eliminarCita',ContrRecordatorio.deleteCita)
 router.put('/actualizarCita',ContrRecordatorio.putCitas)
 router.post('/recordatorios/fecha',ContrRecordatorio.getFecha)
+
+//Perfil
+router.put('/actualizarPerfil',ContrUsuario.putUpdUsuarioPerfil)
+
 
 
 //Descuentos
