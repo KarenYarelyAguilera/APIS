@@ -239,12 +239,21 @@ router.post('/bitacora/perfil',ContrBitacora.postIngresoPerfil)
 router.post('/bitacora/cambiocontrasena',ContrBitacora.postContrModifi)
 router.post('/bitacora/cambiopreguntas',ContrBitacora.postPreModifi)
 router.post('/bitacora/salirperfil',ContrBitacora.postSalirPerfil)
-//Citas
-router.post('/bitacora/citas',ContrBitacora.postIngresoPCita)
+//Recordatotio
 router.post('/bitacora/agregarcita',ContrBitacora.postNuevaCita)
 router.post('/bitacora/eliminarcita',ContrBitacora.postBorrarCita)
 router.post('/bitacora/actualizarcita',ContrBitacora.postActualizarCita)
-router.post('/bitacora/citasSalir',ContrBitacora.postSalirCita)
+//Producto
+router.post('/bitacora/insertoproducto',ContrBitacora.postInsertProductoB)
+router.post('/bitacora/saliolistaproductos',ContrBitacora.postSalirListaProductoB)
+router.post('/bitacora/actualizoproducto',ContrBitacora.postActualizarProductoB)
+router.post('/bitacora/eliminoproducto',ContrBitacora.postEliminarProductoB)
+//Compra
+router.post('/bitacora/insertcompra',ContrBitacora.postInsertCompraB)
+//Venta
+router.post('/bitacora/insertventa',ContrBitacora.postInsertVentaB)
+//Pago
+router.post('/bitacora/insertpago',ContrBitacora.postInsertPagoB)
 
 
 //Garantias
@@ -384,10 +393,6 @@ router.post('/recordatorioCitas/agregar',ContrRecordatorio.postCitas)
 router.delete('/eliminarCita',ContrRecordatorio.deleteCita)
 router.put('/actualizarCita',ContrRecordatorio.putCitas)
 router.post('/recordatorios/fecha',ContrRecordatorio.getFecha)
-
-//Perfil
-router.put('/actualizarPerfil',ContrUsuario.putUpdUsuarioPerfil)
-
 
 
 //Descuentos

@@ -1093,6 +1093,93 @@ export const ContrBitacora = {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//-------------------  PANTALLA DE PRODUCTOS-----------------
+
+//---------------Nuevo Producto--------------------
+postInsertProductoB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertProductoB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de  Producto-----------------
+postListaProductoB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postListaProductosB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------- salir Lista de  Producto-----------------
+postSalirListaProductoB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaProductosB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar Producto----------------
+postActualizarProductoB:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarProductoB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar Producto----------------
+postEliminarProductoB:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarProductoB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postInsertCompraB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertCompraB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postInsertVentaB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertVentaB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+postInsertPagoB: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertPagoB({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
 
 
 
