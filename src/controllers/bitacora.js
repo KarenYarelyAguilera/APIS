@@ -741,35 +741,53 @@ postSalirPerfil: async (req,res)=> {
     }
 },
    //-------------------RECORDATORIOS-------------------------
-   postNuevaCita: async (req,res)=> {
-    try {
-        const{Id}=req.body;
-        const result = await ModBitacora.postNuevaCita({Id});
-        res.status(201).json({ id: result.id });
-    } catch (error) {
-        console.log(error);
-    }
-},
+    postIngresoPCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postIngresaPCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    postNuevaCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postNuevaCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 
-postActualizarCita: async (req,res)=> {
-    try {
-        const{Id}=req.body;
-        const result = await ModBitacora.postActualizarCita({Id});
-        res.status(201).json({ id: result.id });
-    } catch (error) {
-        console.log(error);
-    }
-},
+    postActualizarCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postActualizarCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 
-postBorrarCita: async (req,res)=> {
-    try {
-        const{Id}=req.body;
-        const result = await ModBitacora.postBorrarCita({Id});
-        res.status(201).json({ id: result.id });
-    } catch (error) {
-        console.log(error);
-    }
-},
+    postBorrarCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postBorrarCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    postSalirCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postSalirPCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
 //-------------------------------MANTENIMIENTO---------------------------
 //-------------------INGRESO A LA PANTALLA DE SUCURSAL-----------------
 postPantallaSucursal: async (req,res)=> {
