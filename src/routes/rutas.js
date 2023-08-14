@@ -23,7 +23,7 @@ import { ContrPreguntas } from "../controllers/preguntas.js";
 
 import { ContrCompra } from "../controllers/compra.js";
 import { ContrGestion } from "../controllers/Gestion.js";
-import { ContrVentas } from "../controllers/ventas.js";
+import { ContrVentas } from "../controllers/Ventas.js";
 import { ContrRol } from "../controllers/rol.js";
 import { ContrClientes } from "../controllers/clientes.js";
 import { ContrProveedor } from "../controllers/proveedor.js";
@@ -95,9 +95,8 @@ router.post('/compra/NuevaCompra',ContrCompra.postInsertCompra)
 
 //Ventas
 router.get('/Ventas',ContrVentas.getVentas)
+router.post('/VentaDetalle',ContrVentas.getVentaDetalle)
 router.post('/Ventas/NuevaVenta',ContrVentas.postInsertVentas)
-router.put('/Ventas/ActualizarVenta',ContrVentas.putUpdateVenta)
-router.delete('/Ventas/EliminarVenta',ContrVentas.deleteVenta)
 
 //Gestion 
 router.get('/Gestion',ContrGestion.getSucursal)
