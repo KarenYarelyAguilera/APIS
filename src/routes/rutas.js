@@ -3,9 +3,7 @@ import { ContrUsuario } from "../controllers/usuario.js";
 import { ContrLogin } from "../controllers/login.js";
 import { Mailer } from "../controllers/correos.js";
 import { ContrCompraDetalle } from "../controllers/ComprasDetalle.js";
-import { ContrVentaDetalle } from "../controllers/VentasDetalles.js";
 import { ContrKardex } from "../controllers/kardex.js";
-import { ContrVentaDetalleDescuento } from "../controllers/VentasDetalleDescuentos.js";
 
 
 import { ContrGarantia } from "../controllers/garantia.js";
@@ -22,12 +20,10 @@ import { ContrParametro } from "../controllers/parametros.js";
 
 import { ContrEmpleado } from "../controllers/empleado.js";
 import { ContrPreguntas } from "../controllers/preguntas.js";
-import { ContrVentaDetalleProm } from "../controllers/ventaDetallePromocion.js";
-import { ContrVentaDetallePromMarca } from "../controllers/ventaDetallePromocionMarca.js";
 
 import { ContrCompra } from "../controllers/compra.js";
 import { ContrGestion } from "../controllers/Gestion.js";
-import { ContrVentas } from "../controllers/ventas.js";
+import { ContrVentas } from "../controllers/Ventas.js";
 import { ContrRol } from "../controllers/rol.js";
 import { ContrClientes } from "../controllers/clientes.js";
 import { ContrProveedor } from "../controllers/proveedor.js";
@@ -39,7 +35,7 @@ import { ContrExpedineteDetalle } from "../controllers/expedientedetalle.js";
 
 import { ContrEstado } from "../controllers/estado.js";
 import { ContrSucursal } from "../controllers/sucursal.js";
-import{ContrAutoReg} from "../controllers/autoregistro.js"
+import {ContrAutoReg} from "../controllers/autoregistro.js"
 import { ContrDepto } from "../controllers/departamento.js";
 import { ContrCiudad } from "../controllers/ciudad.js";
 import { ContrPais } from "../controllers/pais.js";
@@ -99,9 +95,8 @@ router.post('/compra/NuevaCompra',ContrCompra.postInsertCompra)
 
 //Ventas
 router.get('/Ventas',ContrVentas.getVentas)
+router.post('/VentaDetalle',ContrVentas.getVentaDetalle)
 router.post('/Ventas/NuevaVenta',ContrVentas.postInsertVentas)
-router.put('/Ventas/ActualizarVenta',ContrVentas.putUpdateVenta)
-router.delete('/Ventas/EliminarVenta',ContrVentas.deleteVenta)
 
 //Gestion 
 router.get('/Gestion',ContrGestion.getSucursal)
@@ -162,20 +157,6 @@ router.put('/pyr/editar',ContrPreguntas.putRespuestas)
 router.get('/respuesta',ContrPreguntas.getRespuesta)
 router.get('/pregunta',ContrPreguntas.getPregunta)
 
-
-
-//ventaDetallePromocion
-router.get('/ventaDetallePromocion',ContrVentaDetalleProm.getVentDetalleProm)
-router.post('/ventaDetallePromocion',ContrVentaDetalleProm.InsertVentaDetallePromo)
-router.put('/ventaDetallePromocion',ContrVentaDetalleProm.UpdateVentaDetallePromo)
-router.delete('/ventaDetallePromocion',ContrVentaDetalleProm.DeleteVentaDetallePromo)
-
-
-//ventaDetallePromocionMarca
-router.get('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.getdetallemarca)
-router.post('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.InsertVentaDetalleMarca)
-router.put('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.UpdateVentaDetalleMarca)
-router.delete('/ventaDetallePromocionMarca',ContrVentaDetallePromMarca.DeleteVentaDetalleMarca)
 
 //PROVEEDORES
 router.get('/proveedor',ContrProveedor.getProveedores)
@@ -262,6 +243,57 @@ router.post('/bitacora/salirperfil',ContrBitacora.postSalirPerfil)
 router.post('/bitacora/agregarcita',ContrBitacora.postNuevaCita)
 router.post('/bitacora/eliminarcita',ContrBitacora.postBorrarCita)
 router.post('/bitacora/actualizarcita',ContrBitacora.postActualizarCita)
+//Producto
+router.post('/bitacora/insertoproducto',ContrBitacora.postInsertProductoB)
+router.post('/bitacora/saliolistaproductos',ContrBitacora.postSalirListaProductoB)
+router.post('/bitacora/actualizoproducto',ContrBitacora.postActualizarProductoB)
+router.post('/bitacora/eliminoproducto',ContrBitacora.postEliminarProductoB)
+//Compra
+router.post('/bitacora/insertcompra',ContrBitacora.postInsertCompraB)
+//Venta
+router.post('/bitacora/insertventa',ContrBitacora.postInsertVentaB)
+//Pago
+router.post('/bitacora/insertpago',ContrBitacora.postInsertPagoB)
+//Sucursal
+router.post('/bitacora/insertsucursal',ContrBitacora.postInsertBSucursal)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaSucursal)
+router.post('/bitacora/actualizarsucursal',ContrBitacora.postActualizarSucursal)
+router.post('/bitacora/eliminarsucursal',ContrBitacora.postEliminarSucursal)
+//Modelo
+router.post('/bitacora/insertmodelo',ContrBitacora.postInsertBModelo)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaModelo)
+router.post('/bitacora/actualizarmodelo',ContrBitacora.postActualizarModelo)
+router.post('/bitacora/eliminarmodelo',ContrBitacora.postEliminarModelo)
+//Marca
+router.post('/bitacora/insertmarca',ContrBitacora.postInsertBMarca)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaMarca)
+router.post('/bitacora/actualizarmarca',ContrBitacora.postActualizarMarca)
+router.post('/bitacora/eliminarmarca',ContrBitacora.postEliminarMarca)
+//Metodos de pago 
+router.post('/bitacora/insertMetodopago',ContrBitacora.postInsertBMetodopago)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaMetodopago)
+router.post('/bitacora/actualizarMetodopago',ContrBitacora.postActualizarMetodopago)
+router.post('/bitacora/eliminarMetodopago',ContrBitacora.postEliminarMetodopago)
+//Departamento 
+router.post('/bitacora/insertDepartamento',ContrBitacora.postInsertBDepartamento)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaDepartamento)
+router.post('/bitacora/actualizarDepartamento',ContrBitacora.postActualizarDepartamento)
+router.post('/bitacora/eliminarDepartamento',ContrBitacora.postEliminarDepartamento)
+//Ciudad
+router.post('/bitacora/insertCiudad',ContrBitacora.postInsertBCiudad)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaCiudad)
+router.post('/bitacora/actualizarCiudad',ContrBitacora.postActualizarCiudad)
+router.post('/bitacora/eliminarCiudad',ContrBitacora.postEliminarCiudad)
+//Pais
+router.post('/bitacora/insertPais',ContrBitacora.postInsertBPais)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaPais)
+router.post('/bitacora/actualizarPais',ContrBitacora.postActualizarPais)
+router.post('/bitacora/eliminarPais',ContrBitacora.postEliminarPais)
+//Genero
+router.post('/bitacora/insertGenero',ContrBitacora.postInsertBGenero)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaGenero)
+router.post('/bitacora/actualizarGenero',ContrBitacora.postActualizarGenero)
+router.post('/bitacora/eliminarGenero',ContrBitacora.postEliminarGenero)
 
 
 //Garantias
@@ -351,22 +383,12 @@ router.delete('/tipopago/eliminar',ContrTipoPago.delTipoPago)
  router.put('/ComprasDetalle',ContrCompraDetalle.PutCompraDetalle)
  router.delete('/ComprasDetalle',ContrCompraDetalle.DeleteCompraDetalle)
 
-//DetalleVenta
-router.get('/VentasDetalles',ContrVentaDetalle.GetVentaDetalle)
-router.post('/VentasDetalles',ContrVentaDetalle.PostVentaDetalle)
-router.put('/VentasDetalles',ContrVentaDetalle.PutVentaDetalle)
-router.delete('/VentasDetalles',ContrVentaDetalle.DeleteVentaDetalle)
 
 //Kardex
 router.get('/kardex',ContrKardex.GetKardex)
 router.post('/ProductoKardex',ContrKardex.postProductoKardexFiltro)
 router.post('/kardex',ContrKardex.PostKardex)
 
-//VentaDetalleDescuento
-router.get('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.GetVentaDetalleDescuento)
-router.post('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PostVentaDetalleDescuento)
-router.put('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.PutVentaDetalleDescuento)
-router.delete('/VentasDetalleDescuentos',ContrVentaDetalleDescuento.DeleteVentaDetalleDescuento)
 
 //Expediente
 
@@ -418,5 +440,8 @@ router.get('/Descuento',ContrDescuento.getDescuento)
 router.post('/Descuento/NuevoDescuento',ContrDescuento.postInsertDescuento)
 router.put('/Descuento/ActualizarDescuento',ContrDescuento.putDescuento)
 router.delete('/Descuento/BorrarDescuento',ContrDescuento.deleteDescuento)
+
+
+
 
 export default router
