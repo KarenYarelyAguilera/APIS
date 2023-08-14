@@ -477,27 +477,112 @@ postEliminarDescuento: async (req,res)=> {
     }
 },
 
+
 //------------------Pantalla de Promociones--------------------------
 //------------Ingreso a la pantalla de Promociones---------------
 postPantallaPromocio: async (req,res)=> {
     try {
         const{Id}=req.body;
         const result = await ModBitacora.postPantallaPromocio({Id});
+
+    postBorrarCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postBorrarCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    postSalirCita: async (req, res) => {
+        try {
+            const { Id } = req.body;
+            const result = await ModBitacora.postSalirPCita({ Id });
+            res.status(201).json({ id: result.id });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    //-------------------------------MANTENIMIENTO---------------------------
+
+//-------------------INGRESO A LA PANTALLA DE SUCURSAL-----------------
+postPantallaSucursal : async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postPantallaSucursal({Id});
+
         res.status(201).json({ id: result.id });
     } catch (error) {
         console.log(error);
     }
 },
+
 //---------------Nueva Promocion--------------------
 postInsertBPromocion: async (req,res)=> {
     try {
         const{Id}=req.body;
         const result = await ModBitacora.postInsertBPromocion({Id});
+=======
+
+//---------------Nuevo Sucursal--------------------
+postInsertBSucursal: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBSucursal({Id});
+
         res.status(201).json({ id: result.id });
     } catch (error) {
         console.log(error);
     }
 },
+
+
+//--------------------Lista de Sucursal-----------------
+postVerListaSucursal: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaSucursal({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-----------------------Salir de la lista de Sucursal---------------------------
+postSalirListaSucursal: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaSucursal({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Sucursal----------------
+postActualizarSucursal:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarSucursal({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos Sucursal-----------------
+postEliminarSucursal:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarSucursal({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+
+
 
 //--------------------Lista de Promocion-----------------
 postVerListaPromocion: async (req,res)=> {
@@ -1180,6 +1265,143 @@ postInsertPagoB: async (req,res)=> {
     }
 },
 
+
+
+
+//-------------------INGRESO A LA PANTALLA DE CIUDAD-----------------
+postPantallaCiudad : async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postPantallaCiudad({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//---------------Nuevo Ciudad--------------------
+postInsertBCiudad: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBCiudad({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de Ciudad-----------------
+postVerListaCiudad: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaCiudad({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-----------------------Salir de la lista de Ciudad---------------------------
+postSalirListaCiudad: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaCiudad({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Ciudad----------------
+postActualizarCiudad:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarCiudad({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos Ciudad-----------------
+postEliminarCiudad:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarCiudad({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+
+
+
+//-------------------INGRESO A LA PANTALLA DE GENERO-----------------
+postPantallaGenero : async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postPantallaGenero({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//---------------Nuevo Genero--------------------
+postInsertBGenero: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postInsertBGenero({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//--------------------Lista de Genero-----------------
+postVerListaGenero: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postVerListaGenero({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-----------------------Salir de la lista de Genero---------------------------
+postSalirListaGenero: async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postSalirListaGenero({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//------------------------Actualizar datos de Genero----------------
+postActualizarGenero:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postActualizarGenero({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
+
+//-------------------Eliminar datos Genero-----------------
+postEliminarGenero:  async (req,res)=> {
+    try {
+        const{Id}=req.body;
+        const result = await ModBitacora.postEliminarGenero({Id});
+        res.status(201).json({ id: result.id });
+    } catch (error) {
+        console.log(error);
+    }
+},
 
 
 

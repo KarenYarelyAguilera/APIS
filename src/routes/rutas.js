@@ -256,6 +256,46 @@ router.post('/bitacora/insertcompra',ContrBitacora.postInsertCompraB)
 router.post('/bitacora/insertventa',ContrBitacora.postInsertVentaB)
 //Pago
 router.post('/bitacora/insertpago',ContrBitacora.postInsertPagoB)
+//Sucursal
+router.post('/bitacora/insertsucursal',ContrBitacora.postInsertBSucursal)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaSucursal)
+router.post('/bitacora/actualizarsucursal',ContrBitacora.postActualizarSucursal)
+router.post('/bitacora/eliminarsucursal',ContrBitacora.postEliminarSucursal)
+//Modelo
+router.post('/bitacora/insertmodelo',ContrBitacora.postInsertBModelo)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaModelo)
+router.post('/bitacora/actualizarmodelo',ContrBitacora.postActualizarModelo)
+router.post('/bitacora/eliminarmodelo',ContrBitacora.postEliminarModelo)
+//Marca
+router.post('/bitacora/insertmarca',ContrBitacora.postInsertBMarca)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaMarca)
+router.post('/bitacora/actualizarmarca',ContrBitacora.postActualizarMarca)
+router.post('/bitacora/eliminarmarca',ContrBitacora.postEliminarMarca)
+//Metodos de pago 
+router.post('/bitacora/insertMetodopago',ContrBitacora.postInsertBMetodopago)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaMetodopago)
+router.post('/bitacora/actualizarMetodopago',ContrBitacora.postActualizarMetodopago)
+router.post('/bitacora/eliminarMetodopago',ContrBitacora.postEliminarMetodopago)
+//Departamento 
+router.post('/bitacora/insertDepartamento',ContrBitacora.postInsertBDepartamento)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaDepartamento)
+router.post('/bitacora/actualizarDepartamento',ContrBitacora.postActualizarDepartamento)
+router.post('/bitacora/eliminarDepartamento',ContrBitacora.postEliminarDepartamento)
+//Ciudad
+router.post('/bitacora/insertCiudad',ContrBitacora.postInsertBCiudad)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaCiudad)
+router.post('/bitacora/actualizarCiudad',ContrBitacora.postActualizarCiudad)
+router.post('/bitacora/eliminarCiudad',ContrBitacora.postEliminarCiudad)
+//Pais
+router.post('/bitacora/insertPais',ContrBitacora.postInsertBPais)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaPais)
+router.post('/bitacora/actualizarPais',ContrBitacora.postActualizarPais)
+router.post('/bitacora/eliminarPais',ContrBitacora.postEliminarPais)
+//Genero
+router.post('/bitacora/insertGenero',ContrBitacora.postInsertBGenero)
+router.post('/bitacora/sali',ContrBitacora.postSalirListaGenero)
+router.post('/bitacora/actualizarGenero',ContrBitacora.postActualizarGenero)
+router.post('/bitacora/eliminarGenero',ContrBitacora.postEliminarGenero)
 
 
 //Garantias
