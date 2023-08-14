@@ -243,6 +243,17 @@ router.post('/bitacora/salirperfil',ContrBitacora.postSalirPerfil)
 router.post('/bitacora/agregarcita',ContrBitacora.postNuevaCita)
 router.post('/bitacora/eliminarcita',ContrBitacora.postBorrarCita)
 router.post('/bitacora/actualizarcita',ContrBitacora.postActualizarCita)
+//Producto
+router.post('/bitacora/insertoproducto',ContrBitacora.postInsertProductoB)
+router.post('/bitacora/saliolistaproductos',ContrBitacora.postSalirListaProductoB)
+router.post('/bitacora/actualizoproducto',ContrBitacora.postActualizarProductoB)
+router.post('/bitacora/eliminoproducto',ContrBitacora.postEliminarProductoB)
+//Compra
+router.post('/bitacora/insertcompra',ContrBitacora.postInsertCompraB)
+//Venta
+router.post('/bitacora/insertventa',ContrBitacora.postInsertVentaB)
+//Pago
+router.post('/bitacora/insertpago',ContrBitacora.postInsertPagoB)
 
 
 //Garantias
