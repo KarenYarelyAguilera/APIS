@@ -201,7 +201,7 @@ export const ModPermisos = {
             throw new error("Error al consumir el API")
         }
     },
-    postPermisosObj1:async (permisos)=>{
+    postPermisosObj:async (permisos)=>{
         let conexion
         try {
             conexion=await connectDB()

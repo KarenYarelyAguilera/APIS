@@ -98,6 +98,7 @@ router.post('/compra/NuevaCompra',ContrCompra.postInsertCompra)
 router.get('/Ventas',ContrVentas.getVentas)
 router.post('/VentaDetalle',ContrVentas.getVentaDetalle)
 router.post('/Ventas/NuevaVenta',ContrVentas.postInsertVentas)
+router.post('/Ventas/NuevaVentaDbdb',ContrVentas.postInsertVentasDeberitasDeberitas)
 
 //Gestion 
 router.get('/Gestion',ContrGestion.getSucursal)
