@@ -94,6 +94,6 @@ export const ModPago = {
       console.log(error);
       conexion.end()
       throw new Error("Error al eliminar el tipo de pago");
-    }
-  },
+    }
+  },
 };
