@@ -57,11 +57,4 @@ export const ContrPermisos= {
         res.json(permisos)
     },
 
-    //Consultar permisos
-    postPermisosObj:async(req,res)=>{
-        const {idRol,idObj} = req.body
-        const permisos = await ModPermisos.postPermisosObj1({idRol,idObj})
-        res.status(201).json(permisos)
-    },
-
 }

@@ -9,6 +9,14 @@ export const ContrVentas ={
         
     },
 
+    getVentaDetalle: async (req,res)=> {
+        const {id} = req.body
+        const ventadetalle = await ModVentas.postVentaDetalle({id})
+        res.json(ventadetalle)
+ 
+    
+},
+    
     postInsertVentas: async (req, res) => {
         
         try {
