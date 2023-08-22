@@ -14,7 +14,7 @@ app.use(morgan('dev'))
 app.get('/', (req, res) => {
     res.status(200).send('OK')
 });
-app.use(router)
+app.use('/api',router)
 
 
 app.listen(PORT,()=>console.log(`Servidor corriendo en puerto ${PORT}`)) 
