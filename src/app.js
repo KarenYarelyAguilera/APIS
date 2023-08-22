@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.use(express.json())
 app.use(morgan('dev'))
 
-app.use('/api',router)
+app.use(router)
 
 
 app.listen(PORT,()=>console.log(`Servidor corriendo en puerto ${PORT}`)) 
